@@ -19,7 +19,7 @@ public class LetterManager : MonoBehaviour
     [SerializeField] PathCreator path;
 
     [SerializeField] GameObject letterCharactersPrefab;
-    [SerializeField]List<GameObject> letterCharactersList;
+    [SerializeField] List<GameObject> letterCharactersList;
 
     [SerializeField] string _word;
     public string Word
@@ -29,7 +29,7 @@ public class LetterManager : MonoBehaviour
     [SerializeField] int maximumLetters;
     [SerializeField] float armySpawnInterval;
 
-    [SerializeField] Transform letterHolder;
+    [SerializeField] LetterHolder letterHolder;
     char[] correctLetters;
     int correctLettersCount=0;
 
@@ -52,7 +52,7 @@ public class LetterManager : MonoBehaviour
         letterCharactersList = new List<GameObject>(maximumLetters);
         for (int i = 0; i < maximumLetters; i++)
         {
-            GameObject letterArmy = Instantiate(letterCharactersPrefab,letterHolder);
+            GameObject letterArmy = Instantiate(letterCharactersPrefab,transform);
             letterArmy.GetComponent<LetterMovement>().SetPathReference(path);
 
             letterArmy.SetActive(false);
@@ -70,7 +70,7 @@ public class LetterManager : MonoBehaviour
         return System.Convert.ToChar(Random.Range('A', 'Z'));
     }
 
-    public bool CheckIfTheLetterIsInWord(char c)
+    public bool CheckIfTheLetterIsInWord(char c,Vector2 screenPosition)
     {
         foreach (char letter in correctLetters)
         {
@@ -78,6 +78,7 @@ public class LetterManager : MonoBehaviour
             {
                 print(letter+" \n");
                 correctLettersCount++;
+                letterHolder.AddLetters(c,screenPosition);
                 return true;
             }
         }

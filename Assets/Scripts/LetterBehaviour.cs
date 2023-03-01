@@ -18,7 +18,10 @@ public class LetterBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            LetterManager.letterManagerInstance.CheckIfTheLetterIsInWord(_letter);
+            if (LetterManager.letterManagerInstance.CheckIfTheLetterIsInWord(_letter,Camera.main.WorldToScreenPoint(transform.position)))
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }
