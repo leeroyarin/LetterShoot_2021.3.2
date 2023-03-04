@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class UILetters : MonoBehaviour
 {
-    TextMeshProUGUI letterText;
-
-    public void SetLetter(char letter)
+    public TextMeshProUGUI letterText;
+    public bool activated;
+    public char letter;
+    public void SetLetter(char p_letter)
     {
-        letterText.text = letter.ToString();
+        letterText.text = p_letter.ToString();
+        letter = p_letter;
     }
 }

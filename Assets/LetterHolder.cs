@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class LetterHolder : MonoBehaviour
 {
-    LetterChangingVisualizer letterVisualizer;
-    List<GameObject> list = new List<GameObject>();
-    GameObject letterUi;
-    Canvas canvas;
-    public void AddLetters(char letter, Vector2 screenPosition)
+    [SerializeField] LetterChangingVisualizer letterVisualizer;
+    List<UILetters> uiLetterLists = new List<UILetters>();
+    [SerializeField]GameObject letterUi;
+    public void ActivateLetters(char letter)
     {
-        GameObject letterObject = Instantiate(letterUi, this.transform);
-        Vector3 letterPosition = letterUi.GetComponent<RectTransform>().transform.position;
-        letterObject.SetActive(false);
-        letterVisualizer.MovementAction(screenPosition,letterPosition, letterObject);
+        for(int i = 0; i<uiLetterLists.Count; i++)
+        {
+            if (uiLetterLists[i].letter == letter && !(uiLetterLists[i].activated))
+            {
+                uiLetterLists[i].gameObject.SetActive(true);
+                uiLetterLists[i].activated = true;
+                print("Caled");
+                break;
+            }
+        }
     }
 
     public void DestinationReached(GameObject letterObject)
@@ -22,4 +27,14 @@ public class LetterHolder : MonoBehaviour
         letterObject.SetActive(true);
 
     }
+    public void AddLettersInLetterHolder(char[] p_correctLetters)
+    {
+        foreach(char letter in p_correctLetters)
+        {
+            UILetters l_UILetter = Instantiate(letterUi, this.transform).GetComponent<UILetters>();
+            l_UILetter.SetLetter(letter);
+            uiLetterLists.Add(l_UILetter);
+        }
+    }
+
 }

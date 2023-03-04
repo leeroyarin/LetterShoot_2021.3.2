@@ -35,12 +35,17 @@ public class LetterManager : MonoBehaviour
 
     Queue<char> allLetters;
 
+    private void Awake()
+    {
+        EventManager.LetterRecieved += CheckIfTheLetterIsInWord;
+    }
     private void Start()
     {
         SetCharactersInArray();
         InstantitateLetterArmy();
         SetOnQueue(CreateAnArrayWithCorrectAnswer());
         StartCoroutine(SetArmyOnTrack());
+        letterHolder.AddLettersInLetterHolder(correctLetters);
     }
 
     private void InstantitateLetterArmy()
@@ -52,7 +57,7 @@ public class LetterManager : MonoBehaviour
         letterCharactersList = new List<GameObject>(maximumLetters);
         for (int i = 0; i < maximumLetters; i++)
         {
-            GameObject letterArmy = Instantiate(letterCharactersPrefab,transform);
+            GameObject letterArmy = Instantiate(letterCharactersPrefab,transform);////--------------------------------------
             letterArmy.GetComponent<LetterMovement>().SetPathReference(path);
 
             letterArmy.SetActive(false);
@@ -70,19 +75,18 @@ public class LetterManager : MonoBehaviour
         return System.Convert.ToChar(Random.Range('A', 'Z'));
     }
 
-    public bool CheckIfTheLetterIsInWord(char c,Vector2 screenPosition)
+    public void CheckIfTheLetterIsInWord(char c, LetterBehaviour letterBehaviour)
     {
         foreach (char letter in correctLetters)
         {
             if(c== letter)
             {
-                print(letter+" \n");
                 correctLettersCount++;
-                letterHolder.AddLetters(c,screenPosition);
-                return true;
+                letterHolder.ActivateLetters(c);
+                letterBehaviour.OnCorrectLetter();
             }
         }
-        return false;
+        letterBehaviour.OnWrongLetter();
     }
 
     IEnumerator SetArmyOnTrack()
@@ -107,7 +111,9 @@ public class LetterManager : MonoBehaviour
     private void SummonLetterArmy(int letterArmyIndex)
     {
         letterCharactersList[letterArmyIndex].SetActive(true);
-        char letterForArmy = allLetters.Dequeue();                         
+        char letterForArmy;
+        if (allLetters.Count == 0) { letterForArmy = GetRandomLetterNotInString(_word); }
+        else letterForArmy = allLetters.Dequeue();
         letterCharactersList[letterArmyIndex].GetComponent<LetterBehaviour>().SetLetterCharacter(letterForArmy);
     }
 
@@ -174,11 +180,32 @@ public class LetterManager : MonoBehaviour
 
     char GetLetter()
     {
+        /*
+         * makes a local variable of char
+         * then gets possible letter again and again until the letter is not present in word
+         * and returns the letter
+         */
         char l_temLetter;
         do
         {
             l_temLetter = GetPossibleLetters();
         } while ((CheckIfTheLetterIsInCorrectLetters(l_temLetter)));
         return l_temLetter;
+    }
+
+    public void AddLetterObjectToTheList(GameObject gameObject)
+    {
+        /*
+         * Sets LettersMovement to 0 to restart from the starting point of the path creator 
+         * gets the char from the letterGameObject and checks if the letter is present in the word or not
+         * if true then the letter is added to the queue
+         * else a new letter is added to the queue
+         * and finally the gameObject is disabled
+         */
+        char l_letter = gameObject.GetComponent<LetterBehaviour>().Letter;
+        if (CheckIfTheLetterIsInCorrectLetters(l_letter)) allLetters.Enqueue(l_letter);
+        else allLetters.Enqueue(GetLetter());
+
+        gameObject.SetActive(false);
     }
 }

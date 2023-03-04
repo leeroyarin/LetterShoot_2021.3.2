@@ -7,7 +7,9 @@ public class LetterBehaviour : MonoBehaviour
 {
     public TextMeshPro letterText;
     char _letter;
-
+    [SerializeField] Rigidbody2D rb;
+    
+    public char Letter { get { return _letter; } }  
     public void SetLetterCharacter(char letter)
     {
         _letter = letter;
@@ -18,10 +20,27 @@ public class LetterBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            if (LetterManager.letterManagerInstance.CheckIfTheLetterIsInWord(_letter,Camera.main.WorldToScreenPoint(transform.position)))
-            {
-                gameObject.SetActive(false);
-            }
+            EventManager.LetterRecieved(_letter,this);
         }
+    }
+
+    private void DisableLetterArmy()
+    {
+        rb.isKinematic = true;
+    }
+
+    public void OnCorrectLetter()
+    {
+        gameObject.SetActive(false );
+    }
+
+    public void OnWrongLetter()
+    {
+        /*//Doesnt work because of the behaviour of moving along the path creator
+        rb.isKinematic = false;
+        rb.AddForce(new Vector2(0, 2), ForceMode2D.Impulse);
+        Invoke("DisableLetterArmy", 4f);*/
+        gameObject.SetActive(false);
+
     }
 }

@@ -18,6 +18,7 @@ public class LetterMovement : MonoBehaviour
     }
     void OnEnable()
     {
+        movementDistance = 0;
         StartCoroutine(MoveAlongPath());
     }
 

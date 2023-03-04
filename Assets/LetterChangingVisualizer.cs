@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class LetterChangingVisualizer : MonoBehaviour
 {
-    RectTransform position;
+    [SerializeField] RectTransform position;
     Vector3 _destinationPosition;
     GameObject _gameObjectToActive;
-    LetterHolder letterHolder;
+    [SerializeField] LetterHolder letterHolder;
+    AnimationCurve _curve;
     public void MovementAction(Vector2 originPosition, Vector2 targetPosition,GameObject gameObject)
     {
+        print("CALLED");
         this.gameObject.SetActive(true);
         _destinationPosition = targetPosition;
         position.position = originPosition;

@@ -43,6 +43,7 @@ public class Shooter : MonoBehaviour,IInteractableShooter
 
     private void SummonBullet(int bulletIndex)
     {
+        
         bulletPool[bulletIndex].transform.position = bulletSpawnPoint.position;
         bulletPool[bulletIndex].SetActive(true);
         bulletPool[bulletIndex].GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.right * 20;

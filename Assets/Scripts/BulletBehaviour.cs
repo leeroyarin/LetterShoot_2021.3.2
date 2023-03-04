@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
-    Vector2 m_OriginPosition;
+    Coroutine m_Coroutine;
     private void OnEnable()
     {
-        Invoke("DeactivateBullet", 3);
-    }
-    void DeactivateBullet()
-    {
-        gameObject.SetActive(false);
-    }
+        m_Coroutine = StartCoroutine(DeactivateBullet(1.5f));
 
+    }
+    IEnumerator DeactivateBullet( float timer)
+    {
+
+        yield return new WaitForSeconds(timer);
+/*       gameObject.GetComponent<TrailRenderer>().enabled = false;
+*/        gameObject.GetComponent<TrailRenderer>().Clear();
+        gameObject.SetActive(false);
+
+        StopCoroutine(m_Coroutine);
+    }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        DeactivateBullet();
+//        Debug.Log(collision.gameObject.name + " " + Time.time);
+        StartCoroutine(DeactivateBullet(0f));
     }
+
+
 }
+

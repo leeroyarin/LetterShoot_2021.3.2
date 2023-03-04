@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    private Action<EventParam> someListener1;
+    /*private Action<EventParam> someListener1;
     private Action<EventParam> someListener2;
     private Action<EventParam> someListener3;
 
@@ -78,5 +76,6 @@ public class Test : MonoBehaviour
     void SomeThirdFunction(EventParam eventParam)
     {
         Debug.Log("Some Third Function was called!");
-    }
+    
+     }*/
 }

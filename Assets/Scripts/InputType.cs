@@ -10,7 +10,6 @@ public abstract class InputType
         Collider2D hit = Physics2D.OverlapCircle(position, 1f);
         if (hit?.tag == "Shooter")
         {
-            Debug.Log("OK");
             inputManager.ChangeShooter(hit);
             return;
         }
