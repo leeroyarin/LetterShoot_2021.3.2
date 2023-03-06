@@ -182,7 +182,7 @@ SortingGroup:
   m_GameObject: {fileID: 2755793307434188400}
   m_Enabled: 1
   m_SortingLayerID: -2066064305
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!1 &2755793307541422629
 GameObject:
@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 2755793307541422649}
   - component: {fileID: 1214638999895001144}
   - component: {fileID: 4736492056940617348}
+  - component: {fileID: 4400779205196494435}
   m_Layer: 0
   m_Name: Letter
   m_TagString: Letter
@@ -286,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   letterText: {fileID: 2755793307434188407}
+  letterMovement: {fileID: 2755793307541422649}
   rb: {fileID: 4736492056940617348}
 --- !u!114 &2755793307541422649
 MonoBehaviour:
@@ -300,7 +302,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  movementDistance: 0
   TextRect: {fileID: 2755793307434188404}
 --- !u!61 &1214638999895001144
 BoxCollider2D:
@@ -349,3 +350,14 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!210 &4400779205196494435
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755793307541422629}
+  m_Enabled: 1
+  m_SortingLayerID: 61241835
+  m_SortingLayer: 2
+  m_SortingOrder: 0

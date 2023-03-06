@@ -72,7 +72,7 @@ public class LetterManager : MonoBehaviour
     }
 
     char GetPossibleLetters() {
-        return System.Convert.ToChar(Random.Range('A', 'Z'));
+        return System.Convert.ToChar(Random.Range('A', 'Z'+1));
     }
 
     public void CheckIfTheLetterIsInWord(char c, LetterBehaviour letterBehaviour)
@@ -82,8 +82,8 @@ public class LetterManager : MonoBehaviour
             if(c== letter)
             {
                 correctLettersCount++;
-                letterHolder.ActivateLetters(c);
-                letterBehaviour.OnCorrectLetter();
+                letterBehaviour.OnCorrectLetter(letterHolder);
+                return;
             }
         }
         letterBehaviour.OnWrongLetter();
@@ -112,7 +112,7 @@ public class LetterManager : MonoBehaviour
     {
         letterCharactersList[letterArmyIndex].SetActive(true);
         char letterForArmy;
-        if (allLetters.Count == 0) { letterForArmy = GetRandomLetterNotInString(_word); }
+        if (allLetters.Count == 0) { letterForArmy = GetRandomLetterNotInString(Word); }
         else letterForArmy = allLetters.Dequeue();
         letterCharactersList[letterArmyIndex].GetComponent<LetterBehaviour>().SetLetterCharacter(letterForArmy);
     }

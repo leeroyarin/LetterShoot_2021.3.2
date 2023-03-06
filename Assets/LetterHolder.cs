@@ -5,7 +5,7 @@ using UnityEngine;
 public class LetterHolder : MonoBehaviour
 {
     [SerializeField] LetterChangingVisualizer letterVisualizer;
-    List<UILetters> uiLetterLists = new List<UILetters>();
+    public List<UILetters> uiLetterLists = new List<UILetters>();
     [SerializeField]GameObject letterUi;
     public void ActivateLetters(char letter)
     {
@@ -33,8 +33,15 @@ public class LetterHolder : MonoBehaviour
         {
             UILetters l_UILetter = Instantiate(letterUi, this.transform).GetComponent<UILetters>();
             l_UILetter.SetLetter(letter);
+            l_UILetter.OnLetterLoad();
             uiLetterLists.Add(l_UILetter);
         }
     }
 
+    public UILetters GetUILetterOfChar(char c)
+    {
+        int index = uiLetterLists.FindIndex(x => (x.letter == c)&& (x.activated==false));
+        if(index>=uiLetterLists.Count || index <0) return null;
+        return uiLetterLists[index];
+    }
 }

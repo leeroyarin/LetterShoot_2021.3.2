@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class LetterMovement : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class LetterMovement : MonoBehaviour
     float movementDistance = 0;
     [SerializeField] RectTransform TextRect;
     Transform cameraTransform;
+    Coroutine currentCoroutine;
+    Transform m_letterHolderPosition;
+    UILetters uiLetter;
 
     private void Awake()
     {
@@ -19,7 +23,7 @@ public class LetterMovement : MonoBehaviour
     void OnEnable()
     {
         movementDistance = 0;
-        StartCoroutine(MoveAlongPath());
+        currentCoroutine = StartCoroutine(MoveAlongPath());
     }
 
     private IEnumerator MoveAlongPath()
@@ -39,5 +43,41 @@ public class LetterMovement : MonoBehaviour
     public void SetPathReference(PathCreator path)
     {
         pathCreator= path;
+    }
+
+    public void GetTheLetterToLetterHolder(UILetters letter)
+    {
+        if (letter == null)
+        {
+            print("Null Exception");
+            return;
+        }
+
+        StopCoroutine(currentCoroutine);
+        letter.gameObject.SetActive(true);
+        letter.OnLetterLoad();
+        m_letterHolderPosition = letter.rectTransform.transform;
+        uiLetter = letter;
+        letter.activated = true;
+        currentCoroutine = StartCoroutine(MoveTowardsLetterUI());
+    }
+
+    IEnumerator MoveTowardsLetterUI()
+    {
+       
+        while (Vector2.Distance(m_letterHolderPosition.position, transform.position) >= 0.2)
+        {
+            transform.localRotation.SetLookRotation(m_letterHolderPosition.position);
+            transform.position += (m_letterHolderPosition.position-transform.position).normalized* Time.deltaTime * movementSpeed*25;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        gameObject.SetActive(false);
+        uiLetter.OnLetterReached();
+        StopCoroutine(currentCoroutine);
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(currentCoroutine);
     }
 }

@@ -47,9 +47,12 @@ TagManager:
   - name: Shooter
     uniqueID: 1156022661
     locked: 0
+  - name: LetterBox
+    uniqueID: 61241835
+    locked: 0
   - name: CharacterText
     uniqueID: 2228902991
     locked: 0
-  - name: Lightings
+  - name: LetterBoxUI
     uniqueID: 1236715651
     locked: 0
