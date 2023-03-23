@@ -7,6 +7,8 @@ TagManager:
   - Shooter
   - Bullet
   - Letter
+  - TrainHead
+  - Hook
   layers:
   - Default
   - TransparentFX
@@ -44,15 +46,42 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Shooter
-    uniqueID: 1156022661
+  - name: Ground
+    uniqueID: 3402891505
+    locked: 0
+  - name: Environment
+    uniqueID: 3087163283
+    locked: 0
+  - name: Path
+    uniqueID: 1908945003
+    locked: 0
+  - name: TrainBox
+    uniqueID: 1947377313
     locked: 0
   - name: LetterBox
     uniqueID: 61241835
+    locked: 0
+  - name: Trees
+    uniqueID: 4251037301
+    locked: 0
+  - name: Shooter
+    uniqueID: 1156022661
+    locked: 0
+  - name: ShooterTop
+    uniqueID: 444146745
     locked: 0
   - name: CharacterText
     uniqueID: 2228902991
     locked: 0
   - name: LetterBoxUI
     uniqueID: 1236715651
+    locked: 0
+  - name: Train
+    uniqueID: 759747383
+    locked: 0
+  - name: Curtain
+    uniqueID: 1221238533
+    locked: 0
+  - name: MainUI
+    uniqueID: 3025823333
     locked: 0

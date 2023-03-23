@@ -6,9 +6,11 @@ using UnityEngine;
 public class LetterBehaviour : MonoBehaviour
 {
     public TextMeshPro letterText;
-    char _letter;
     [SerializeField] LetterMovement letterMovement;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField]char _letter;
+    [SerializeField]Transform objectToParentOn;
+
     bool _done = false;
     
     public char Letter { get { return _letter; } }
@@ -30,16 +32,30 @@ public class LetterBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet")  && !_done)
+        GameObject collidedObject = collision.gameObject;
+        if (collidedObject.CompareTag("Hook")  && !_done)
         {
-            EventManager.LetterRecieved(_letter,this);
+            gameObject.transform.SetParent(LetterManager.LetterManagerInstance.transform,false);
+            collidedObject.GetComponent<HookBehaviour>().SetLetterToHook(this);
             _done = true;
         }
     }
-
-    public void OnCorrectLetter(LetterHolder letterHolder)
+    public void CheckTheContainer()
     {
-        letterMovement.GetTheLetterToLetterHolder(letterHolder.GetUILetterOfChar(Letter));
+        EventManager.LetterRecieved?.Invoke(_letter, this);
+        this.StartCoroutine(ShowTheItem());
+        letterMovement.StopCoroutine(letterMovement.MoveAlongHook());
+    }
+    public void OnCorrectLetter()
+    {
+        //Reveal item
+        if (!this.gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(true);
+        }
+
+        //letterMovement.GetTheLetterToLetterHolder(letterHolder.GetUILetterOfChar(Letter));
+
     }
 
     public void OnWrongLetter()
@@ -48,7 +64,24 @@ public class LetterBehaviour : MonoBehaviour
         rb.isKinematic = false;
         rb.AddForce(new Vector2(0, 2), ForceMode2D.Impulse);
         Invoke("DisableLetterArmy", 4f);*/
-        gameObject.SetActive(false);
-
+        if (!this.gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(true);
+        }
     }
+
+    IEnumerator ShowTheItem()
+    {
+        letterMovement.StopAllCoroutines();
+        yield return new WaitForSeconds(1);
+
+        yield return new WaitForSeconds(1);
+
+        gameObject.SetActive(false);
+        this.transform.SetParent(objectToParentOn,false);
+        this.transform.localPosition = Vector3.zero;
+        //localScale if necessary
+    }
+
+    public void GetReferenceToParentObjects(Transform parentTransform) => objectToParentOn = parentTransform;
 }
