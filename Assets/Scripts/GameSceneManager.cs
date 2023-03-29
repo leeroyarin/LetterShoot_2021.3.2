@@ -16,18 +16,33 @@ class GameSceneManager : MonoBehaviour
 
     private void Awake()
     {
-        _sceneManager = this;
+        if (_sceneManager == null)
+        {
+            _sceneManager = this;
+            DontDestroyOnLoad(_sceneManager.gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
  //       DontDestroyOnLoad(this.gameObject);
     }
     public void ChangeSceneOnName(string sceneName)
     {
+        AudioManager.Instance.StopAllSoundAtOnce();
+
         SceneManager.LoadScene(sceneName);
     }
 
     public void ChangeLevel(int levelNumber)
     {
+        AudioManager.Instance.StopAllSoundAtOnce();
+
         SceneManager.LoadScene(levelNumber);
     }
     public void ChangeNextLevelScene() => ChangeLevel(SceneManager.GetActiveScene().buildIndex + 1);
-    public void ReloadScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    public void ReloadScene() {
+        AudioManager.Instance.StopAllSoundAtOnce();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

@@ -20,37 +20,42 @@ public class MainGameUIManager : MonoBehaviour
     }
     void EnableGameConclusionMenu(bool complete)
     {
-        if(levelSuccessUI == null) print(null);
+        Curtain.CurtainInstance.SetPermanentCurtain();
         if (complete)
         {
             levelSuccessUI.SetActive(true);
-            pauseIcon.SetActive(false);
+            pauseIcon?.SetActive(false);
 
         }
         else
         {
-            pauseIcon.SetActive(false);
+            levelFailureUI.SetActive(true);
+            pauseIcon?.SetActive(false);
         }
     }
 
     public void ButtonFunction(string functionName)
     {
-        
+        Time.timeScale = 1;
+
         switch (functionName.ToUpper())
         {
             case "RESTART":
                 GameSceneManager.SceneManagerInstance.ReloadScene();
-                Time.timeScale = 1;
                 break;
             case "EXIT":
             case "EXITTOMENU":
-                Time.timeScale = 1;
-                GameSceneManager.SceneManagerInstance.ChangeSceneOnName("MainMenu");
+            case "STARTMENU":
+                GameSceneManager.SceneManagerInstance.ChangeSceneOnName("StartMenu");
                 break;
             case "NEXT":
             case "NEXT LEVEL":
-                Time.timeScale = 1;
+            case "NEXTLEVEL":
                 GameSceneManager.SceneManagerInstance.ChangeNextLevelScene();
+                break;
+            case "LEVELSELECTION":
+            case "LEVEL SELECTION":
+                GameSceneManager.SceneManagerInstance.ChangeSceneOnName("LevelSelection");
                 break;
         }
     }
@@ -62,14 +67,24 @@ public class MainGameUIManager : MonoBehaviour
 
     public void ShowSettings(bool enable)
     {
-        settingsUI.SetActive(enable);
+        settingsUI.SetActive(enable); 
+
     }
 
     public void ShowPauseMenu(bool enable)
     {
         Time.timeScale = enable? 0f:1f;
+        AudioManager.Instance.OnPause(enable);
         pauseMenu.SetActive(enable);
-        pauseIcon.SetActive(!enable);
+        pauseIcon?.SetActive(!enable);
+        InputManager.InputManagerInstance.enabled = !enable;
+
+    }
+
+    public void OnPointerUpThePauseButton(bool IsPointerUp)
+    {
+        print(IsPointerUp);
+        InputManager.InputManagerInstance.enabled = !IsPointerUp;
 
     }
 }

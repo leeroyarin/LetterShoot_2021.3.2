@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class HookBehaviour : MonoBehaviour
+public partial class HookBehaviour : MonoBehaviour
 {
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] Transform _hookSpawnPointTransform;
@@ -15,6 +15,8 @@ public class HookBehaviour : MonoBehaviour
     LetterBehaviour letterToGrab;
     Vector2 _launchDirection;
     [SerializeField]Enum_HookStates _hookStates = Enum_HookStates.resting;
+
+    AudioManager audioManager;
     enum Enum_HookStates
     {
         resting,
@@ -23,6 +25,7 @@ public class HookBehaviour : MonoBehaviour
     }
     private void Start()
     {
+        audioManager = AudioManager.Instance;
         lineRenderer.enabled = false;
         lineRenderer.positionCount = 0;
         lineRenderer.startWidth = 0.1f;
@@ -76,6 +79,8 @@ public class HookBehaviour : MonoBehaviour
         _hookRigidBody.angularVelocity = 0;
         _hookRigidBody.inertia = 0;
         _hookRigidBody.velocity = Vector2.zero;
+        AudioManager.Instance.PlaySound(SoundNames.HookHalt);
+
     }
 
     public void LaunchHook(float p_firingPower)
@@ -87,6 +92,7 @@ public class HookBehaviour : MonoBehaviour
         _hookStates = Enum_HookStates.lauching;
         lineRenderer.enabled = true;
         lineRenderer.positionCount = 2;
+        AudioManager.Instance.PlaySound(SoundNames.HookLaunch);
 
         StartCoroutine(RevertHookAfterSeconds(1.5f));
     }
@@ -106,12 +112,15 @@ public class HookBehaviour : MonoBehaviour
         _hookRigidBody.inertia = 0;
         _hookRigidBody.velocity = Vector2.zero;
         hookCollider.enabled = false;
+        AudioManager.Instance.PlaySound(SoundNames.HookRevert,0.2f);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_hookStates == Enum_HookStates.lauching)
         {
+            AudioManager.Instance.PlaySound(SoundNames.HookCollide);
             StopAllCoroutines();
             RevertHook();
             return;
@@ -119,6 +128,9 @@ public class HookBehaviour : MonoBehaviour
         //if the hook gets collided with the shooter then the hook stops moving 
         if (collision.gameObject.CompareTag("Shooter")&& _hookStates == Enum_HookStates.reverting)
         {
+            print(SoundNames.HookCollide);
+
+
             _hookStates = Enum_HookStates.resting;
             lineRenderer.enabled = false;
             lineRenderer.positionCount = 0;

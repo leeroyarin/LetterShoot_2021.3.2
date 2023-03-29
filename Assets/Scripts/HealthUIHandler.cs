@@ -5,25 +5,35 @@ using UnityEngine.UI;
 
 public class HealthUIHandler : MonoBehaviour
 {
-    int totalHealthCount;
+    [SerializeField]int totalHealthCount;
 
     int currentHealthCount;
     Toggle[] healthIcons;
+    private void OnEnable()
+    {
+        EventManager.CorrectLetterHit += OnLetterHit;
+    }
     private void Start()
     {
         CreateAndReferenceHealthToggleChild();
-        EventManager.CorrectLetterHit += OnLetterHit;
+      
     }
 
     private void CreateAndReferenceHealthToggleChild()
     {
-        GameObject[] shooter = GameObject.FindGameObjectsWithTag("Shooter");
+        /*
+        //gets array of gameobjects with tag shooter
+        //GameObject[] shooter = GameObject.FindGameObjectsWithTag("Shooter");
+
+        //and sets total health count according to the number of shooter tagged gameobjects
         totalHealthCount = shooter.Length;
+        */
+        
         currentHealthCount = totalHealthCount;
         healthIcons = new Toggle[totalHealthCount];
         GameObject objectExample = GetComponentInChildren<Toggle>().gameObject;
         healthIcons[0] = objectExample.GetComponent<Toggle>();
-        for (int i = 1; i < shooter.Length; i++)
+        for (int i = 1; i < totalHealthCount; i++)
         {
             GameObject recentlyCreatedGameObject = Instantiate(objectExample, this.transform);
             healthIcons[i] = recentlyCreatedGameObject.GetComponent<Toggle>();

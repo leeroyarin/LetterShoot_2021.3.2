@@ -9,6 +9,7 @@ TagManager:
   - Letter
   - TrainHead
   - Hook
+  - Level
   layers:
   - Default
   - TransparentFX

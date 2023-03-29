@@ -11,6 +11,7 @@ public class LetterBehaviour : MonoBehaviour
     [SerializeField]char _letter;
     [SerializeField]Transform objectToParentOn;
 
+    public bool destroyed;
     bool _done = false;
     
     public char Letter { get { return _letter; } }
@@ -22,7 +23,13 @@ public class LetterBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
+        destroyed = false;
         _done = false;
+    }
+
+    private void OnDisable()
+    {
+        destroyed = true;
     }
     public void SetLetterCharacter(char letter)
     {
@@ -48,7 +55,7 @@ public class LetterBehaviour : MonoBehaviour
     }
     public void OnCorrectLetter()
     {
-        //Reveal item
+         //Reveal item
         if (!this.gameObject.activeInHierarchy)
         {
             gameObject.SetActive(true);

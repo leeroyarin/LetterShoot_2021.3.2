@@ -45,7 +45,12 @@ public class InputManager : MonoBehaviour
         HasShooter = (currentInteractableShooter == null)? false:true;
         currentInputType.InputAction(this);
     }
-    void DisableInputs(bool complete)
+    private void OnDestroy()
+    {
+        EventManager.GameCompleted -= DisableInputs;
+
+    }
+    public void DisableInputs(bool complete)
     {
         this.enabled = false;
     }
@@ -75,9 +80,5 @@ public class InputManager : MonoBehaviour
         //helps to set reference of interface IInteractableShooter of any shooter 
         currentInteractableShooter = FindObjectOfType<Shooter>().GetComponent<IInteractableShooter>();
     }
-    private void OnDestroy()
-    {
-        EventManager.GameCompleted -= DisableInputs;
 
-    }
 }

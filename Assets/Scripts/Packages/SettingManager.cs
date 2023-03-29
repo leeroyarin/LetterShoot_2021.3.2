@@ -11,6 +11,8 @@ public class SettingManager: MonoBehaviour
     [SerializeField] Slider _musicSlider;
     [SerializeField] Toggle _musicToggle;
     [SerializeField] Toggle _audioToggle;
+
+    [SerializeField] GameObject _settingsUI;
     
     private void Start()
     {
@@ -21,6 +23,8 @@ public class SettingManager: MonoBehaviour
         SetSaturationSliderValue();
         SetMusicSliderValue();
         SetAudioSliderValue();
+        SetMusicToggleValue();
+        SetAudioToggleValue();
     }
 
     private void SetMaxMinValue()
@@ -49,6 +53,10 @@ public class SettingManager: MonoBehaviour
     void SetContrastSliderValue() => _contrastSlider.value = SettingsData.Contrast;
     void SetAudioSliderValue() => _audioSlider.value = SettingsData.SfxVolume;
     void SetMusicSliderValue() => _musicSlider.value = SettingsData.MusicVolume;
+
+    void SetAudioToggleValue()=> _audioToggle.isOn = SettingsData.AllowSfx;
+    void SetMusicToggleValue() => _musicToggle.isOn = SettingsData.AllowMusic;
+
     #endregion
 
     #region SetValue from slider
@@ -82,11 +90,17 @@ public class SettingManager: MonoBehaviour
     public void SetMusicToggle()
     {
         AudioManager.Instance.MuteMusic(!_musicToggle.isOn);
+        _musicSlider.gameObject.SetActive(_musicToggle.isOn);
+        SettingsData.AllowMusic = _musicToggle.isOn;
+
     }
 
     public void SetAudioToggle()
     {
         AudioManager.Instance.MuteAudio(!_audioToggle.isOn);
+        _audioSlider.gameObject.SetActive(_audioToggle.isOn);
+        SettingsData.AllowSfx = _audioToggle.isOn;
+
     }
     #endregion
 
@@ -100,5 +114,10 @@ public class SettingManager: MonoBehaviour
         _musicSlider.value= 0.5f;
         _musicToggle.isOn = true;
         _audioToggle.isOn = true;
+    }
+
+    public void OnSettingCloseButtonClick(bool enable)
+    {
+        _settingsUI?.SetActive(enable);
     }
 }

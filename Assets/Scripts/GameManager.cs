@@ -17,11 +17,16 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    GamePhase currentGamePhase;
+
     [SerializeField]LetterHolder m_letterHolder;
     [SerializeField]LetterManager m_letterManager;
 
     [SerializeField] List<QuestionAnswer> questionAnswersSet;
     Queue<QuestionAnswer> m_questionAnswerList;
+
+
+    [SerializeField] GameObject[] dayNightPhase;
     private void Awake()
     {
         _instance = this;
@@ -40,6 +45,18 @@ public class GameManager : MonoBehaviour
             if(m_letterManager==null) m_letterManager = LetterManager.LetterManagerInstance;
             if(m_letterHolder==null) m_letterHolder = LetterHolder.LetterHolderInstance;
         }
+
+        EventManager.GameCompleted += OnGameComplete;
+
+//        AudioManager.Instance.StartPlayingSFXOnLoop(SoundNames.TrainRun,5.6f);
+//        AudioManager.Instance.PlayEndingSfxAfterLoopingSfx(SoundNames.TrainRun,SoundNames.TrainEnd,5.5f);
+
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.GameCompleted -= OnGameComplete;
+
     }
 
     private void SortQuestionsList()
@@ -48,6 +65,7 @@ public class GameManager : MonoBehaviour
         QuestionAnswer[] l_UnsortedList = questionAnswersSet.OrderBy(x => random.Next()).ToArray();
         questionAnswersSet.Clear();
         m_questionAnswerList = new Queue<QuestionAnswer>(l_UnsortedList);
+        
     }
 
     private void CheckIfAnyQuestionsLeft()
@@ -56,13 +74,24 @@ public class GameManager : MonoBehaviour
         {
             EventManager.GameCompleted?.Invoke(true);
         }else{
+
             QuestionAnswer questionAnswer = m_questionAnswerList.Dequeue();
             m_letterManager.SetQuestionAndAnswer(questionAnswer.Question, questionAnswer.Answer,questionAnswer.WrongLetters);
             LetterHolder.LetterHolderInstance.AddLettersInLetterHolder(questionAnswer.Answer.ToArray());
             LetterHolder.LetterHolderInstance.SetQuestion(questionAnswer.Question);
+//            AudioManager.Instance.PlaySound(SoundNames.TrainStart,1f);
+            AudioManager.Instance.StartPlayingSFXOnLoop(SoundNames.TrainLoop,1f);
+            dayNightPhase[(int)currentGamePhase].SetActive(false);
+
+            currentGamePhase = (GamePhase)(m_questionAnswerList.Count % 4);
+            dayNightPhase[(int)currentGamePhase].SetActive(true);
+
         }
     }
-
+    public void OnGameComplete(bool completed)
+    {
+        foreach(GameObject lights in dayNightPhase) lights.SetActive(false);
+    }
     public void WaitForWhileAndChangeQuestion()
     {
         Invoke(nameof(CheckIfAnyQuestionsLeft), 1f);
@@ -89,6 +118,21 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+
+    public enum GamePhase
+    {
+        Morning = 0,
+        Day = 1,
+        Evening = 2,
+        Night = 3,
+    }
+
+    public enum GameSubPhase
+    {
+        Initialization,
+        Questioning,
+        Ending
+    }
 }
 
 

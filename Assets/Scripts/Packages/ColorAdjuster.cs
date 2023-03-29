@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.UI;
 
 public class ColorAdjuster : MonoBehaviour
 {
@@ -26,15 +23,20 @@ public class ColorAdjuster : MonoBehaviour
 
     private void Awake()
     {
+
+        if(_colorAdjuster==null)
+        {
+            _colorAdjuster = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this);
+        }
         globalVolume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
         SetColorAdjustments();
-
     }
 
-    private void Start()
-    {
-
-    }
     private void SetColorAdjustments()
     {
         colorAdjustments.contrast.value = SettingsData.Contrast;
@@ -46,8 +48,6 @@ public class ColorAdjuster : MonoBehaviour
     {
         SettingsData.Brightness = value;
         Instance.colorAdjustments.postExposure.value = value;
-
-
     }
 
     public void SetContrast(float value)

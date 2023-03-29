@@ -68,6 +68,7 @@ public class LetterMovement : MonoBehaviour
 
     private void OnDisable()
     {
+        transform.localPosition = Vector3.zero;
         if(currentCoroutine != null) StopCoroutine(currentCoroutine);
 
     }

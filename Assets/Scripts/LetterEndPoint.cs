@@ -8,7 +8,7 @@ public class LetterEndPoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("TrainHead")|| collision.tag == "TrainHead")
+        if (collision.CompareTag("TrainHead"))
         {
             collision.GetComponent<TrainHead>().stop = true;
             Destroy(collision.gameObject);

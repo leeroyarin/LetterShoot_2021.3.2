@@ -103,6 +103,10 @@ public class LetterHolder : MonoBehaviour
 
             //Invokes the Events WordCompleted
             EventManager.wordCompleted?.Invoke();
+
+            //           AudioManager.Instance.StopSoundLoopAndShiftToAnotherSound();
+            AudioManager.Instance.StopAllSoundAtOnce();
+//            AudioManager.Instance.PlaySound(SoundNames.TrainEnd);
         }
     }
 

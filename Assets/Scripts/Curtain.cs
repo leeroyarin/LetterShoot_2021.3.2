@@ -74,7 +74,7 @@ public class Curtain : MonoBehaviour
         }
         LetterManager.LetterManagerInstance.RemoveAllTrainPartsFromTheScene();
         GameManager.Instance.WaitForWhileAndChangeQuestion();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         StartCoroutine(FadeIn());
     }
