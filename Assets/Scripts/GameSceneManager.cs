@@ -19,13 +19,11 @@ class GameSceneManager : MonoBehaviour
         if (_sceneManager == null)
         {
             _sceneManager = this;
-            DontDestroyOnLoad(_sceneManager.gameObject);
         }
         else
         {
             Destroy(this);
         }
- //       DontDestroyOnLoad(this.gameObject);
     }
     public void ChangeSceneOnName(string sceneName)
     {
@@ -44,5 +42,10 @@ class GameSceneManager : MonoBehaviour
     public void ReloadScene() {
         AudioManager.Instance.StopAllSoundAtOnce();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OnSuccessfulGameComplete()
+    {
+        if (SceneManager.GetActiveScene().buildIndex >= PlayerData.PlayerCurrentLevel) PlayerData.PlayerCurrentLevel++;
     }
 }

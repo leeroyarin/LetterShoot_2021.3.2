@@ -19,38 +19,6 @@ public class LetterMovement : MonoBehaviour
         TextRect.LookAt(TextRect.position + cameraTransform.forward);
     }
 
-
-    /*  public IEnumerator MoveAlongTrainBox()
-      {
-          //to let buffer
-          yield return new WaitWhile(() => (targetTransform == null));
-
-          while (gameObject.activeInHierarchy)
-          {
-              transform.position = targetTransform.position;
-              transform.rotation = targetTransform.rotation;
-
-              TextRect.LookAt( TextRect.position + cameraTransform.forward);
-              yield return new WaitForSeconds(Time.deltaTime);
-          }
-      }
-
-      public void GetTheLetterToLetterHolder(UILetters letter)
-      {
-          if (letter == null)
-          {
-              print("Null Exception");
-              return;
-          }
-
-          StopCoroutine(currentCoroutine);
-          letter.gameObject.SetActive(true);
-          letter.OnLetterLoad();
-          hookTransform = letter.rectTransform.transform;
-          letter.activated = true;
-          currentCoroutine = StartCoroutine(MoveAlongHook());
-      }
-    */
     public IEnumerator MoveAlongHook()
     {
        
@@ -62,7 +30,6 @@ public class LetterMovement : MonoBehaviour
             transform.position += (moveDirection - transform.position).normalized* Time.deltaTime * movementSpeed;
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        print("das");
         StopCoroutine(currentCoroutine);
     }
 
@@ -71,18 +38,5 @@ public class LetterMovement : MonoBehaviour
         transform.localPosition = Vector3.zero;
         if(currentCoroutine != null) StopCoroutine(currentCoroutine);
 
-    }
-
-    public void GetLetterContainerMoveAlongHook(UILetters letter)
-    {
-        if (letter == null)
-        {
-            print("Null Exception");
-            return;
-        }
-
-        StopCoroutine(currentCoroutine);
-        letter.activated = true;
-        currentCoroutine = StartCoroutine(MoveAlongHook());
     }
 }

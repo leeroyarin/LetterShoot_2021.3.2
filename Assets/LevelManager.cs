@@ -1,12 +1,9 @@
 using PathCreation;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.RestService;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    int currentSelectionLevel = 7;
+    int currentSelectionLevel;
     int availableLevelsCount;
     [SerializeField] PlayerLevelLocator playerLevelLocator;
     [SerializeField] PathCreator path;
@@ -15,7 +12,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        availableLevelsCount = 20;
+        availableLevelsCount = PlayerData.PlayerCurrentLevel;
 
         levelPoints = GameObject.FindGameObjectsWithTag("Level");
         currentSelectionLevel = PlayerData.PlayerCurrentLevel;
@@ -47,8 +44,6 @@ public class LevelManager : MonoBehaviour
     public void OnPreviousLevelClick()
     {
         if (currentSelectionLevel <= 1) return;
-        
-
         if(!playerLevelLocator.OnMoveToNext(false)) return;
         currentSelectionLevel-=1;
         print(currentSelectionLevel);

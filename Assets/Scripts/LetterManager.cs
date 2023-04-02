@@ -10,7 +10,6 @@ public class LetterManager : MonoBehaviour
 {
     #region StaticSingleton
     private static LetterManager _letterManager;
-    [SerializeField] Transform _letter;
     public static LetterManager LetterManagerInstance
     {
         get
@@ -21,6 +20,7 @@ public class LetterManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] Transform _objectOriginPoint;
 
     #region New
     [SerializeField] int maximumLetters = 30;
@@ -66,29 +66,36 @@ public class LetterManager : MonoBehaviour
         letterTrainBoxesList = new List<GameObject>(maximumLetters);
         for (int i = 0; i < maximumLetters; i++)
         {
-            //instantiation of the gameObject to Add in the list
-            GameObject lettertrainBox = Instantiate(letterTrainBoxPrefab, this.transform);
-            //Set necessary references
-            lettertrainBox.GetComponent<TrainBox>().SetPathReference(path);
-            LetterBehaviour letterContainerBox = lettertrainBox.GetComponentInChildren<LetterBehaviour>();
- 
-            //Sets inactive incase they are active
-            lettertrainBox.SetActive(false);
-            letterContainerBox.gameObject.SetActive(true);
-
-            //Added to the list
-            letterTrainBoxesList.Add(lettertrainBox);
+            InstantiateTrainBoxAndAddToTheList();
         }
+    }
+
+    private GameObject InstantiateTrainBoxAndAddToTheList()
+    {
+
+        //instantiation of the gameObject to Add in the list
+        GameObject lettertrainBox = Instantiate(letterTrainBoxPrefab, this.transform);
+        //Set necessary references
+        lettertrainBox.GetComponent<TrainBox>().SetPathReference(path);
+        LetterBehaviour letterContainerBox = lettertrainBox.GetComponentInChildren<LetterBehaviour>();
+
+        //Sets inactive incase they are active
+        lettertrainBox.SetActive(false);
+        letterContainerBox.gameObject.SetActive(true);
+
+        //Added to the list
+        letterTrainBoxesList.Add(lettertrainBox);
+
+        return lettertrainBox;
     }
 
     IEnumerator SetTrainOnTrack()
     {
-        
-        StartCoroutine(Instantiate(trainHeadPrefab, this.transform).GetComponent<TrainHead>().MoveTrainOnPath(path));
+
+        Instantiate(trainHeadPrefab, this.transform).GetComponent<TrainHead>().SetTrainHeadOnTrack(path);
         while (!_gameCompleted)
         {
             yield return new WaitForSeconds(armySpawnInterval);
-//            print("CAAALED");
             CheckInPool();
         }
 
@@ -98,27 +105,36 @@ public class LetterManager : MonoBehaviour
         {
             for (int i = 0; i < letterTrainBoxesList.Count; i++)
             {
-   //             print(i+": "+ !letterTrainBoxesList[i].activeInHierarchy);
                 if (!letterTrainBoxesList[i].activeInHierarchy)
                 {
                     SummonLetterTrainBoxAndContainer(i);
-                    break;
+                    return;
                 }
             }
+            ActivateGameObject(InstantiateTrainBoxAndAddToTheList());
+            maximumLetters++;
         }
         void SummonLetterTrainBoxAndContainer(int letterArmyIndex)
         {
-            letterTrainBoxesList[letterArmyIndex].SetActive(true);
-            char letterForArmy;
-            //incase the m_allLetters gets empty
-            //otherwise the m_allLetters char is taken
-            if (m_allLetters.Count == 0) { letterForArmy = GetRandomWrongLetter(); }
-            else letterForArmy = m_allLetters.Dequeue();
-            //Set letter in the letter container i.e. child of train box
-            LetterBehaviour letterBehaviour = letterTrainBoxesList[letterArmyIndex].GetComponentInChildren<LetterBehaviour>();
-            letterBehaviour.SetLetterCharacter(letterForArmy);
-            letterBehaviour.gameObject.SetActive(true);
+            ActivateGameObject(letterTrainBoxesList[letterArmyIndex]);
+
+            
+
         }
+        void ActivateGameObject(GameObject letterBox)
+            {
+                letterBox.SetActive(true);
+                char letterForArmy;
+                //incase the m_allLetters gets empty
+                //otherwise the m_allLetters char is taken
+                if (m_allLetters.Count == 0) { letterForArmy = GetRandomWrongLetter(); }
+                else letterForArmy = m_allLetters.Dequeue();
+                //Set letter in the letter container i.e. child of train box
+                LetterBehaviour letterBehaviour = letterBox.GetComponentInChildren<LetterBehaviour>();
+                letterBehaviour.SetLetterCharacter(letterForArmy);
+                letterBehaviour.MakeTheObjectUndrestroyed();
+                letterBehaviour.gameObject.SetActive(true);
+            }
     }
 
     char GetRandomWrongLetter()
@@ -188,7 +204,7 @@ public class LetterManager : MonoBehaviour
         }
     }
 
-    public void AddLetterObjectToTheList(GameObject gameObject)
+    public void AddTrainBoxToTheList(GameObject p_trainBox,LetterBehaviour p_letterBehaviour)
     {
         ///<summary>
         ///
@@ -199,17 +215,27 @@ public class LetterManager : MonoBehaviour
         ///*and finally the gameObject is disabled
         /// </summary>
 
-        GameObject trainBoxGameObject = gameObject.transform.parent.gameObject;
-        LetterBehaviour letter_behaviour = gameObject.GetComponent<LetterBehaviour>();
-        char l_letter = letter_behaviour.Letter;
-        if (CheckIfTheLetterIsInCorrectLetters(l_letter)&&!letter_behaviour.destroyed)
+        char l_letter = p_letterBehaviour.Letter;
+        if (CheckIfTheLetterIsInCorrectLetters(l_letter))
         {
-            EventManager.CorrectLetterHit?.Invoke(false);
-            m_allLetters.Enqueue(l_letter);
+            if (!p_letterBehaviour.destroyed)
+            {
+                EventManager.CorrectLetterHit?.Invoke(false);
+                m_allLetters.Enqueue(l_letter);
+            }
+            else
+            {
+                m_allLetters.Enqueue(GetRandomWrongLetter());
+                p_letterBehaviour.gameObject.SetActive(true);
+            }
+            
         }
-        else m_allLetters.Enqueue(GetRandomWrongLetter());
-        trainBoxGameObject.transform.position = _letter.position;
-        trainBoxGameObject.SetActive(false);
+        else
+        {
+            m_allLetters.Enqueue(GetRandomWrongLetter());
+        }
+        p_trainBox.transform.position = _objectOriginPoint.position;
+        p_trainBox.SetActive(false);
     }
 
 
@@ -223,14 +249,12 @@ public class LetterManager : MonoBehaviour
 
         if (CheckIfTheLetterIsInCorrectLetters(c))
         {
-            letterBehaviour.OnCorrectLetter();
+            letterBehaviour.PlayCorrectLetterAction();
             letterHolder.SetTheUILetterActive(c);
-            EventManager.CorrectLetterHit?.Invoke(true);
             return;
         }
-        letterBehaviour.OnWrongLetter();
+        letterBehaviour.PlayIncorrectLetterAction();
 //        CameraEffects.Instance.OnLetterHit(false);
-        EventManager.CorrectLetterHit?.Invoke(false);
     }
     public void RemoveAllTrainPartsFromTheScene()
     {
@@ -243,18 +267,6 @@ public class LetterManager : MonoBehaviour
 
     #endregion
     #region TestingListRemove
-    /*private void RemoveFromList()
-    {
-        List<char> wordList = new List<char>(4);
-        wordList.Add('a');
-        wordList.Add('b');
-        wordList.Add('c');
-        wordList.Add('d');
-        foreach (char c in wordList) print(c);
-        print(wordList.Count);
-        wordList.Remove('d');
-        foreach (char c in wordList) print(c);
-        print(wordList.Count);
-    }*/
+
     #endregion
 }

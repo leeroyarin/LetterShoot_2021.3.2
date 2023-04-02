@@ -83,7 +83,6 @@ public class MainGameUIManager : MonoBehaviour
 
     public void OnPointerUpThePauseButton(bool IsPointerUp)
     {
-        print(IsPointerUp);
         InputManager.InputManagerInstance.enabled = !IsPointerUp;
 
     }

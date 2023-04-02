@@ -39,6 +39,12 @@ public class TrainBox : MonoBehaviour
             transform.position = trainPath.path.GetPointAtDistance(movementDistance);
             Quaternion rotation = trainPath.path.GetRotationAtDistance(movementDistance);
             transform.rotation = new Quaternion(0, 0, -rotation.x, rotation.w);
+            if (movementDistance > trainPath.path.length)
+            {
+                transform.localPosition = Vector3.zero; 
+                if (!letterContainier.gameObject.activeInHierarchy) letterContainier.gameObject.SetActive(true);
+                LetterManager.LetterManagerInstance.AddTrainBoxToTheList(this.gameObject, letterContainier);
+            }
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }

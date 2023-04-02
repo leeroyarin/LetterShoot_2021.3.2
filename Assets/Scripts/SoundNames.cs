@@ -9,6 +9,7 @@
     public static readonly string TrainRun = "TrainRun";
     public static readonly string TrainEnd = "TrainEnd";
     public static readonly string TrainLoop = "TrainCompleteLoop";
-    
+
+    public static readonly string Explosion = "Explosion";
 
 }

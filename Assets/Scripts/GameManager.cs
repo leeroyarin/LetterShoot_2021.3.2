@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    GamePhase currentGamePhase;
+    public GamePhase currentGamePhase;
 
     [SerializeField]LetterHolder m_letterHolder;
     [SerializeField]LetterManager m_letterManager;
@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         if (m_questionAnswerList.Count == 0)
         {
+            GameSceneManager.SceneManagerInstance.OnSuccessfulGameComplete();
             EventManager.GameCompleted?.Invoke(true);
         }else{
 
@@ -81,8 +82,8 @@ public class GameManager : MonoBehaviour
             LetterHolder.LetterHolderInstance.SetQuestion(questionAnswer.Question);
 //            AudioManager.Instance.PlaySound(SoundNames.TrainStart,1f);
             AudioManager.Instance.StartPlayingSFXOnLoop(SoundNames.TrainLoop,1f);
-            dayNightPhase[(int)currentGamePhase].SetActive(false);
 
+            dayNightPhase[(int)currentGamePhase].SetActive(false);
             currentGamePhase = (GamePhase)(m_questionAnswerList.Count % 4);
             dayNightPhase[(int)currentGamePhase].SetActive(true);
 
@@ -121,10 +122,10 @@ public class GameManager : MonoBehaviour
 
     public enum GamePhase
     {
-        Morning = 0,
-        Day = 1,
-        Evening = 2,
-        Night = 3,
+        Morning = 3,
+        Day = 2,
+        Evening = 1,
+        Night = 0,
     }
 
     public enum GameSubPhase

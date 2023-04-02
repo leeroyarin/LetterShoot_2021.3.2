@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class LetterBehaviour : MonoBehaviour
+public class LetterBehaviour : MonoBehaviour,IOnCollisionWithHook
 {
     public TextMeshPro letterText;
     [SerializeField] LetterMovement letterMovement;
-    [SerializeField] Rigidbody2D rb;
     [SerializeField]char _letter;
     [SerializeField]Transform objectToParentOn;
+    [SerializeField] Animator animator;
 
     public bool destroyed;
-    bool _done = false;
+    bool _isHooked = false;
     
     public char Letter { get { return _letter; } }
 
@@ -23,9 +23,11 @@ public class LetterBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
-        destroyed = false;
-        _done = false;
+        _isHooked = false;
     }
+
+    public void MakeTheObjectUndrestroyed() => destroyed = false;
+
 
     private void OnDisable()
     {
@@ -33,39 +35,31 @@ public class LetterBehaviour : MonoBehaviour
     }
     public void SetLetterCharacter(char letter)
     {
+            
         _letter = letter;
         letterText.text = letter.ToString();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameObject collidedObject = collision.gameObject;
-        if (collidedObject.CompareTag("Hook")  && !_done)
-        {
-            gameObject.transform.SetParent(LetterManager.LetterManagerInstance.transform,false);
-            collidedObject.GetComponent<HookBehaviour>().SetLetterToHook(this);
-            _done = true;
-        }
-    }
     public void CheckTheContainer()
     {
         EventManager.LetterRecieved?.Invoke(_letter, this);
-        this.StartCoroutine(ShowTheItem());
+//        this.StartCoroutine(ShowTheItem());
         letterMovement.StopCoroutine(letterMovement.MoveAlongHook());
     }
-    public void OnCorrectLetter()
+    public void PlayCorrectLetterAction()
     {
          //Reveal item
         if (!this.gameObject.activeInHierarchy)
         {
             gameObject.SetActive(true);
         }
-
+        animator.Play("CorrectLetterRevealAnimation");
+//        this.StartCoroutine(ShowTheItem());
         //letterMovement.GetTheLetterToLetterHolder(letterHolder.GetUILetterOfChar(Letter));
 
     }
 
-    public void OnWrongLetter()
+    public void PlayIncorrectLetterAction()
     {
         /*//Doesnt work because of the behaviour of moving along the path creator
         rb.isKinematic = false;
@@ -75,20 +69,59 @@ public class LetterBehaviour : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
+        animator.Play("WrongLetterRevealAnimation");
+
+        //        this.StartCoroutine(ShowTheItem());
     }
 
-    IEnumerator ShowTheItem()
+    /*    IEnumerator ShowTheItem()
+        {
+            boxCollider.enabled = false;
+            letterMovement.StopAllCoroutines();
+            yield return new WaitForSeconds(1);
+
+            yield return new WaitForSeconds(1);
+            boxCollider.enabled = true;
+
+            gameObject.SetActive(false);
+            this.transform.SetParent(objectToParentOn,false);
+            this.transform.localPosition = Vector3.zero;
+            //localScale if necessary
+        }*/
+
+    public void GetHooked(HookBehaviour hook)
     {
-        letterMovement.StopAllCoroutines();
-        yield return new WaitForSeconds(1);
-
-        yield return new WaitForSeconds(1);
-
-        gameObject.SetActive(false);
-        this.transform.SetParent(objectToParentOn,false);
-        this.transform.localPosition = Vector3.zero;
-        //localScale if necessary
+        if (!this._isHooked)
+        {
+            gameObject.transform.SetParent(LetterManager.LetterManagerInstance.transform, false);
+            hook.SetLetterToHook(this);
+            _isHooked = true;
+        }
     }
 
-    public void GetReferenceToParentObjects(Transform parentTransform) => objectToParentOn = parentTransform;
+    public void OnWrongLetterAction()
+    {        
+        EventManager.CorrectLetterHit?.Invoke(false);
+        AudioManager.Instance.PlaySound(SoundNames.Explosion);
+
+    }
+
+    public void OnCorrectLetterAction()
+    {
+        EventManager.CorrectLetterHit?.Invoke(true);
+    }
+
+    public void EndAnimation()
+    {
+        //parents to the gameObject
+        this.transform.SetParent(objectToParentOn, false);
+        this.transform.localPosition = Vector3.zero;
+        this.gameObject.SetActive(false);
+    }
+}
+
+
+interface IOnCollisionWithHook
+{
+    public void GetHooked(HookBehaviour hook);
 }

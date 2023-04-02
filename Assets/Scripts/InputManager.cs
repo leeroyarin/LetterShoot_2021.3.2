@@ -48,7 +48,6 @@ public class InputManager : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.GameCompleted -= DisableInputs;
-
     }
     public void DisableInputs(bool complete)
     {
@@ -80,5 +79,4 @@ public class InputManager : MonoBehaviour
         //helps to set reference of interface IInteractableShooter of any shooter 
         currentInteractableShooter = FindObjectOfType<Shooter>().GetComponent<IInteractableShooter>();
     }
-
 }

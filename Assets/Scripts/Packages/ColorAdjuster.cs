@@ -27,7 +27,6 @@ public class ColorAdjuster : MonoBehaviour
         if(_colorAdjuster==null)
         {
             _colorAdjuster = this;
-            DontDestroyOnLoad(this);
         }
         else
         {

@@ -1,147 +1,261 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public partial class HookBehaviour : MonoBehaviour
 {
+    #region Reference
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] Transform _hookSpawnPointTransform;
     [SerializeField] Transform _cannonTopTransform;
     [SerializeField] Rigidbody2D _hookRigidBody;
-    [SerializeField] float _revertingSpeed = 20f;
     [SerializeField] BoxCollider2D hookCollider;
-
-    LetterBehaviour letterToGrab;
-    Vector2 _launchDirection;
-    [SerializeField]Enum_HookStates _hookStates = Enum_HookStates.resting;
-
+    [SerializeField] Enum_HookStates _hookStates = Enum_HookStates.Resting;
     AudioManager audioManager;
+    LetterBehaviour letterToGrab;
+    #endregion
+    [Space(20)]
+    
+    [SerializeField] float _revertingSpeed = 20f;
+    Vector2 _launchDirection;
     enum Enum_HookStates
     {
-        resting,
-        lauching,
-        reverting
+        Resting,
+        Launching,
+        Reverting
     }
+
     private void Start()
     {
+        //Sets Reference of the AudioManager
         audioManager = AudioManager.Instance;
-        lineRenderer.enabled = false;
-        lineRenderer.positionCount = 0;
-        lineRenderer.startWidth = 0.1f;
-        lineRenderer.endWidth = 0.1f;
-    }
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        switch (_hookStates)
+        SetLineRendererValues();
+
+        void SetLineRendererValues()
         {
-            case Enum_HookStates.resting:                
-                break;
-
-            case Enum_HookStates.lauching:
-                float distance = (_hookSpawnPointTransform.position - this.transform.position).magnitude;
-                if (distance > 13)
-                {
-                    StopAllCoroutines();
-                    RevertHook();
-                }
-                lineRenderer.SetPosition(0,this.transform.position);
-                lineRenderer.SetPosition(1,_hookSpawnPointTransform.position);
-                break;
-            case Enum_HookStates.reverting:                
-                transform.position += (_hookSpawnPointTransform.position - this.transform.position).normalized *_revertingSpeed* Time.deltaTime;
-                if(Vector2.Distance(_hookSpawnPointTransform.position,this.transform.position)<0.3f)
-                {
-                    //to check if the letter is the correct ones or not
-                    RestHook();
-
-                    if (letterToGrab != null)
-                    {
-
-                        letterToGrab.CheckTheContainer();
-                        letterToGrab = null;
-                    }
-                    return;
-                }
-                lineRenderer.SetPosition(0, this.transform.position);
-                lineRenderer.SetPosition(1, _hookSpawnPointTransform.position);
-                break;
+            lineRenderer.enabled = false;
+            lineRenderer.positionCount = 0;
+            lineRenderer.startWidth = 0.1f;
+            lineRenderer.endWidth = 0.1f;
         }
     }
 
+    private void Update()
+    {
+        switch (_hookStates)
+        {
+            case Enum_HookStates.Resting:
+                break;
+            case Enum_HookStates.Launching:
+                LaunchAction();
+                break;
+            case Enum_HookStates.Reverting:
+                RevertAction();
+                break;
+        }
+
+        void LaunchAction()
+        {
+
+            //Measures Distance
+            float distance = (_hookSpawnPointTransform.position - this.transform.position).magnitude;
+
+            //Checks if the distance exceeds more than 13
+            if (distance > 13)
+            {
+                //Stops allcorroutine in the script and Reverts the hook
+                StopAllCoroutines();
+                RevertHook();
+            }
+
+            //Sets the lineRenderer's Firstpoint according to its currentPosition
+            lineRenderer.SetPosition(0, this.transform.position);
+
+            //Sets the lineRenderer's LastPoint according to its hookSpawnPoint
+            lineRenderer.SetPosition(1, _hookSpawnPointTransform.position);
+        }
+
+        void RevertAction()
+        {
+            //Reverts the hook at constant speed according to the hook spawn point position
+            transform.position += (_hookSpawnPointTransform.position - this.transform.position).normalized * _revertingSpeed * Time.deltaTime;
+
+            //if the letter to grab i.w. LetterBox is not null then the letterBox's position is set according to the hook's position
+            if (letterToGrab != null) letterToGrab.transform.position = transform.position;
+
+            //if the hook gets close to the hook 
+            if (Vector2.Distance(_hookSpawnPointTransform.position, this.transform.position) < 0.3f)
+            {
+                //Action
+                RestHook();
+
+                //Empties the reference of Letter To Grab
+                if (letterToGrab != null)
+                {
+                    letterToGrab.CheckTheContainer();
+                    letterToGrab = null;
+                }
+                return;
+            }
+
+            //LineRenderer
+            lineRenderer.SetPosition(0, this.transform.position);
+            lineRenderer.SetPosition(1, _hookSpawnPointTransform.position);
+        }
+    }
+
+    /// <summary>
+    /// reverts the position of the hook according to hookSpawnPoint position
+    /// Changes the state of the hook to resting statef
+    /// lineRenderer gets disabled and its point count is setted to zero
+    /// Rests the hook by nullifying all physics elements
+    /// Plpays Hook RestSound
+    /// </summary>
     private void RestHook()
     {
+        //position
         this.transform.position = _hookSpawnPointTransform.position;
-        _hookStates = Enum_HookStates.resting;
+
+        //State
+        _hookStates = Enum_HookStates.Resting;
+
+        //lineRenderer
         lineRenderer.enabled = false;
         lineRenderer.positionCount = 0;
+
+        //physics
         _hookRigidBody.angularVelocity = 0;
         _hookRigidBody.inertia = 0;
         _hookRigidBody.velocity = Vector2.zero;
-        AudioManager.Instance.PlaySound(SoundNames.HookHalt);
+
+        //Sound
+        audioManager.PlaySound(SoundNames.HookHalt);
 
     }
 
+    /// <summary>
+    /// Initially sets the hook position at hookSpawnPoint position
+    /// LaunchDirection gets set according to the hookSpawnPoint's directioin
+    /// sets velocity of the hook
+    /// collider gets enabled
+    /// hoook state gets changed to launching state
+    /// linerenderer gets activated
+    /// lineRenderer's points count gets setted to 2
+    /// And starts coroutine RevertHookAfterSeconds to revert  the hook on time
+    /// </summary>
+    /// <param name="p_firingPower"> Force to apply on the Hook to launch</param>
     public void LaunchHook(float p_firingPower)
     {
+        //Postion
         this.transform.position = _hookSpawnPointTransform.transform.position;
+
+        //Direction
         _launchDirection = _hookSpawnPointTransform.right;
+
+        //physics
         this._hookRigidBody.velocity = _launchDirection * p_firingPower;
+
+        //collider
         hookCollider.enabled = true;
-        _hookStates = Enum_HookStates.lauching;
+
+        //State
+        _hookStates = Enum_HookStates.Launching;
+
+        //lineRenderer
         lineRenderer.enabled = true;
         lineRenderer.positionCount = 2;
-        AudioManager.Instance.PlaySound(SoundNames.HookLaunch);
+
+        //Sound
+        audioManager.PlaySound(SoundNames.HookLaunch);
 
         StartCoroutine(RevertHookAfterSeconds(1.5f));
     }
 
+
+    /// <summary> Initializes reverting of the hook back to the Harpoon 
+    /// 
+    /// lauch direction is reverted
+    /// the hook state is changed to reverting state
+    /// Removal of all the physics inertia, velocity to reduce thte chances of conflict in reverting the hook
+    /// Collider also get disabled so that even if the hook gets by other letterBox it wont collide with it
+    /// and Hook revert sound is played
+    /// 
+    /// </summary>
+    /// 
+    private void RevertHook()
+    {
+        //Direction
+        _launchDirection *= -1;
+        
+        //State
+        _hookStates = Enum_HookStates.Reverting;
+
+        //Physics
+        _hookRigidBody.angularVelocity = 0;
+        _hookRigidBody.inertia = 0;
+        _hookRigidBody.velocity = Vector2.zero;
+
+        //Collider
+        hookCollider.enabled = false;
+
+        //Sound
+        audioManager.PlaySound(SoundNames.HookRevert, 0.2f);
+
+    }
+
+
+    /// <summary>
+    /// This function is used to limit the hook launching distance based on time
+    /// After the time stated the hook gets reverted
+    /// </summary>
+    /// <param name="timer"></param>
+    /// <returns>Nothing</returns>
     IEnumerator RevertHookAfterSeconds(float timer)
     {
         yield return new WaitForSeconds(timer);
         RevertHook();
-
     }
 
-    private void RevertHook()
-    {
-        _launchDirection *= -1;
-        _hookStates = Enum_HookStates.reverting;
-        _hookRigidBody.angularVelocity = 0;
-        _hookRigidBody.inertia = 0;
-        _hookRigidBody.velocity = Vector2.zero;
-        hookCollider.enabled = false;
-        AudioManager.Instance.PlaySound(SoundNames.HookRevert,0.2f);
 
-    }
 
+    ///<summary> 
+    ///
+    ///Checks if the hook is in launching state
+    /// <param name="collision">Collided Object</param> 
+    ///the checks if the collided object is LetterBox
+    ///then gets the letterbox attacked to the hook
+    ///then all the coroutine gets stopped and reverting starts
+    ///Hook Collide sound plays
+    ///</summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_hookStates == Enum_HookStates.lauching)
+       
+        if (_hookStates == Enum_HookStates.Launching)
         {
-            AudioManager.Instance.PlaySound(SoundNames.HookCollide);
+            //if the collided object is letterBox
+            if (collision.gameObject.CompareTag("Letter"))
+            {
+                collision.gameObject.GetComponent<IOnCollisionWithHook>().GetHooked(this);
+            }
+
+            //Sound
+            audioManager.PlaySound(SoundNames.HookCollide);
+
+            //Action
             StopAllCoroutines();
             RevertHook();
             return;
-        }
-        //if the hook gets collided with the shooter then the hook stops moving 
-        if (collision.gameObject.CompareTag("Shooter")&& _hookStates == Enum_HookStates.reverting)
-        {
-            print(SoundNames.HookCollide);
-
-
-            _hookStates = Enum_HookStates.resting;
-            lineRenderer.enabled = false;
-            lineRenderer.positionCount = 0;
-            return;
-        }
+        }        
     }
 
-    public bool CheckIfHookIsLaunched()=> _hookStates == Enum_HookStates.lauching;
+    /// <returns>if the hook state is in lauching state</returns>
+    public bool CheckIfHookIsLaunched()=> _hookStates == Enum_HookStates.Launching;
 
+    /// <returns>if the hook state is in resting state</returns>
+    public bool CheckIfHookIsResting() => _hookStates == Enum_HookStates.Resting;
 
-    public bool CheckIfHookIsResting() => _hookStates == Enum_HookStates.resting;
-
+    /// <summary>
+    /// Sets letter to hook according to the parameter so that it keeps on reference of the LetterBox it collides with and grabs along it
+    /// </summary>
+    /// <param name="letter">LetterBehaviour</param>
     public void SetLetterToHook(LetterBehaviour letter) => letterToGrab = letter;
 }

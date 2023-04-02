@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 internal interface IInteractableShooter
 {
@@ -6,4 +7,6 @@ internal interface IInteractableShooter
     void LookAtPosition(Vector2 targetPosition);
 
     void EnableCannonLights(bool enable);
+
+    void DisableHarpoonForWhile();
 }

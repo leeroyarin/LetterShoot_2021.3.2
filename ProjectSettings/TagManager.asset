@@ -59,14 +59,20 @@ TagManager:
   - name: TrainBox
     uniqueID: 1947377313
     locked: 0
+  - name: Shooter
+    uniqueID: 1156022661
+    locked: 0
   - name: LetterBox
     uniqueID: 61241835
+    locked: 0
+  - name: Train
+    uniqueID: 759747383
     locked: 0
   - name: Trees
     uniqueID: 4251037301
     locked: 0
-  - name: Shooter
-    uniqueID: 1156022661
+  - name: LightPole
+    uniqueID: 4148806467
     locked: 0
   - name: ShooterTop
     uniqueID: 444146745
@@ -77,8 +83,8 @@ TagManager:
   - name: LetterBoxUI
     uniqueID: 1236715651
     locked: 0
-  - name: Train
-    uniqueID: 759747383
+  - name: Sky
+    uniqueID: 2755226163
     locked: 0
   - name: Curtain
     uniqueID: 1221238533

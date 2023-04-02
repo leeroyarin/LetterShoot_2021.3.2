@@ -1,5 +1,4 @@
-﻿using UnityEditor.Experimental.RestService;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SettingManager: MonoBehaviour
