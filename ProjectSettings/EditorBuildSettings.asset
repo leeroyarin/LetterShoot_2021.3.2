@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/OfficialScenes/StartMenu.unity
     guid: 37f89aa661e842348a9bc549a72aa7c1
   - enabled: 1
-    path: Assets/Scenes/LightTesting/LetterTroopTest.unity
-    guid: b8a45795a7bc93442963d897be34776c
+    path: Assets/Scenes/OfficialScenes/Level 1.unity
+    guid: e3fbfb48e9c74364d8be1a4cae353d4b
+  - enabled: 1
+    path: Assets/Scenes/OfficialScenes/Level 2.unity
+    guid: 37cd757a5718a8f409d729cc37144f0a
   - enabled: 1
     path: Assets/Scenes/OfficialScenes/LevelSelection.unity
-    guid: e542759453c28054b9cebdbac89b8ded
+    guid: 6c12a630edadd3b41b11317ebe7787e6
+  - enabled: 1
+    path: Assets/Scenes/OfficialScenes/Instructions.unity
+    guid: a3c19d115fd66ba4da2d71b785cb4e53
   m_configObjects: {}

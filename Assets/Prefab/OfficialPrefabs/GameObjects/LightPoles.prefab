@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4775586302409340160}
   - component: {fileID: 4775586302409340161}
-  - component: {fileID: 4775586302409340167}
   m_Layer: 0
   m_Name: LightPole_1
   m_TagString: Untagged
@@ -86,35 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4775586302409340167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4775586302409340162}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000f100d4ca935f02b86b30c871a19e1274eb79a60343c349f78581e7443924791a4f5cda8483c8b64937d3482d059fca4865665ab4
-  m_ShapePath:
-  - {x: -2.3957396, y: 0.05734496, z: 0}
-  - {x: -1.5411826, y: 0.38655078, z: 0}
-  - {x: -1.5473269, y: -0.4020238, z: 0}
-  m_ShapePathHash: 502867711
-  m_Mesh: {fileID: 0}
-  m_InstanceId: -2192
-  m_LocalBounds:
-    m_Center: {x: -1.968461, y: -0.007736504, z: 0}
-    m_Extent: {x: 0.42727846, y: 0.3942873, z: 0}
 --- !u!1 &4775586302586592244
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,4 +244,4 @@ MonoBehaviour:
   lights:
   - {fileID: 4775586302586592250}
   shadowCaster:
-  - {fileID: 4775586302409340167}
+  - {fileID: 0}

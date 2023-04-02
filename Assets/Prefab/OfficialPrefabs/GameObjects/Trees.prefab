@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2545807626789619023}
   - component: {fileID: 8802419836781045041}
-  - component: {fileID: 5208459965144871429}
   m_Layer: 0
   m_Name: ShadowTree_2
   m_TagString: Untagged
@@ -85,36 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5208459965144871429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560020008390877746}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 0
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000f100d4ca935f02b86b30c8718581e74465665ab4
-  m_ShapePath:
-  - {x: -0.53781575, y: -0.4572299, z: 0}
-  - {x: -0.13489513, y: 0.37664604, z: 0}
-  - {x: 0.537812, y: 0.215478, z: 0}
-  - {x: 0.21547805, y: -0.69898117, z: 0}
-  m_ShapePathHash: 1563851748
-  m_Mesh: {fileID: 0}
-  m_InstanceId: -2390
-  m_LocalBounds:
-    m_Center: {x: -0.000001847744, y: -0.16116756, z: 0}
-    m_Extent: {x: 0.5378139, y: 0.5378136, z: 0}
 --- !u!1 &1733206094919609823
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +262,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2901319798489692797}
   - component: {fileID: 7257427572882276335}
-  - component: {fileID: 2649708009314741074}
   m_Layer: 0
   m_Name: ShadowTree_3
   m_TagString: Untagged
@@ -368,36 +336,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2649708009314741074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5828391304896252654}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 0
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000f100d4ca935f02b86b30c8718581e74465665ab4
-  m_ShapePath:
-  - {x: -0.53781575, y: -0.4572299, z: 0}
-  - {x: -0.13489513, y: 0.37664604, z: 0}
-  - {x: 0.537812, y: 0.215478, z: 0}
-  - {x: 0.21547805, y: -0.69898117, z: 0}
-  m_ShapePathHash: 1563851748
-  m_Mesh: {fileID: 0}
-  m_InstanceId: -2404
-  m_LocalBounds:
-    m_Center: {x: -0.000001847744, y: -0.16116756, z: 0}
-    m_Extent: {x: 0.5378139, y: 0.5378136, z: 0}
 --- !u!1 &6046607340961957014
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +346,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6046607340961957015}
   - component: {fileID: 6046607340961957008}
-  - component: {fileID: 6046607340961957009}
   m_Layer: 0
   m_Name: ShadowTree_1
   m_TagString: Untagged
@@ -483,36 +420,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6046607340961957009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6046607340961957014}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 0
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000f100d4ca935f02b86b30c8718581e74465665ab4
-  m_ShapePath:
-  - {x: -0.53781575, y: -0.4572299, z: 0}
-  - {x: -0.13489513, y: 0.37664604, z: 0}
-  - {x: 0.537812, y: 0.215478, z: 0}
-  - {x: 0.21547805, y: -0.69898117, z: 0}
-  m_ShapePathHash: 1563851748
-  m_Mesh: {fileID: 0}
-  m_InstanceId: -2376
-  m_LocalBounds:
-    m_Center: {x: -0.000001847744, y: -0.16116756, z: 0}
-    m_Extent: {x: 0.5378139, y: 0.5378136, z: 0}
 --- !u!1 &6046607341219019408
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +552,7 @@ SortingGroup:
   m_GameObject: {fileID: 6046607341654072279}
   m_Enabled: 1
   m_SortingLayerID: -43929995
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
 --- !u!68 &6046607341654072274
 EdgeCollider2D:

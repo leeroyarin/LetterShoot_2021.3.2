@@ -10,8 +10,8 @@ public static class SettingsData
     public static float Saturation { get => PlayerPrefs.GetFloat("SaturationValue", 0); set => PlayerPrefs.SetFloat("SaturationValue", value); }
 
     //Audio
-    public static float MusicVolume { get => PlayerPrefs.GetFloat("MusicVolume", 10); set => PlayerPrefs.SetFloat("MusicVolume", value); }
-    public static float SfxVolume { get => PlayerPrefs.GetFloat("AudioVolume", 10); set => PlayerPrefs.SetFloat("AudioVolume", value); }
+    public static float MusicVolume { get => PlayerPrefs.GetFloat("MusicVolume", 1); set => PlayerPrefs.SetFloat("MusicVolume", value); }
+    public static float SfxVolume { get => PlayerPrefs.GetFloat("AudioVolume", 1); set => PlayerPrefs.SetFloat("AudioVolume", value); }
 
     // gets bool value from out and sets into int value, and returns bool according to int 
     public static bool AllowMusic { get => Convert.ToBoolean(PlayerPrefs.GetInt("MusicPlayable", 1)); set => PlayerPrefs.SetInt("MusicPlayable", Convert.ToUInt16(value)); }

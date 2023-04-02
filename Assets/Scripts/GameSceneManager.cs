@@ -24,6 +24,13 @@ class GameSceneManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        EventManager.GameCompleted += OnGameComplete;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.GameCompleted -= OnGameComplete;
     }
     public void ChangeSceneOnName(string sceneName)
     {
@@ -47,5 +54,17 @@ class GameSceneManager : MonoBehaviour
     public void OnSuccessfulGameComplete()
     {
         if (SceneManager.GetActiveScene().buildIndex >= PlayerData.PlayerCurrentLevel) PlayerData.PlayerCurrentLevel++;
+    }
+
+    void OnGameComplete(bool LevelHasCompleted)
+    {
+        if (LevelHasCompleted)
+        {
+            if (SceneManager.GetActiveScene().name == "Instruction") return;
+            if(SceneManager.GetActiveScene().buildIndex> PlayerData.PlayerCurrentLevel )
+            {
+                PlayerData.PlayerCurrentLevel++;
+            }
+        }
     }
 }

@@ -77,4 +77,10 @@ public class Shooter : MonoBehaviour,IInteractableShooter
         EnableCannonLights(true);
     }
     #endregion
+
+    void OnDestroy()
+    {
+        EventManager.CorrectLetterHit -= LetterRecieved;
+
+    }
 }

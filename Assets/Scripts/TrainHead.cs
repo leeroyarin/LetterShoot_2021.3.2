@@ -10,7 +10,7 @@ public class TrainHead : MonoBehaviour
     float movementDistance = 0;
     public bool stop = false;
     [SerializeField] Light2D headLight;
-
+    PathCreator trainPath;
     Coroutine runningCoroutine;
     
 
@@ -24,6 +24,22 @@ public class TrainHead : MonoBehaviour
         StartCoroutine(DeactivateLight());
 
     }
+
+ /*   private void FixedUpdate()
+    {
+        if (!stop)
+        {
+            movementDistance += movementSpeed * Time.deltaTime;
+            transform.position = trainPath.path.GetPointAtDistance(movementDistance);
+            Quaternion rotation = trainPath.path.GetRotationAtDistance(movementDistance);
+            transform.rotation = new Quaternion(0, 0, -rotation.x, rotation.w);
+            if (movementDistance > trainPath.path.length)
+            {
+                stop = true;
+                Destroy(gameObject);
+            }
+        }
+    }*/
     public IEnumerator MoveTrainOnPath(PathCreator trainPath)
     {
         while (!stop)

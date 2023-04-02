@@ -41,7 +41,7 @@ public class SettingManager: MonoBehaviour
         _audioSlider.maxValue = 1;
         _audioSlider.minValue = 0;
 
-        _musicSlider.maxValue = 1;
+        _musicSlider.maxValue = 0.5f;
         _musicSlider.minValue = 0;
     }
 

@@ -5,60 +5,60 @@ using UnityEngine;
 public class PlayerLevelLocator: MonoBehaviour
 {
     [SerializeField] PathCreator pathCreator;
-    float moveDistance = 0;
     [SerializeField] float speed;
     bool moveable = false;
     [SerializeField] Vector3 offset;
-
-    Vector3 previousScale;
-    private void Start()
-    {
-        StartCoroutine(MovePick());
-    }
-    public bool OnMoveToNext(bool right)
-    {
-        if (moveable) return false;
-        moveable = true;
-        speed = Mathf.Sqrt(speed*speed);
-        speed *= right ? 1 : -1;
-        return true;
-    }
-
-    IEnumerator MovePick()
-    {
-        yield return new WaitWhile(() => pathCreator == null);
-        while (gameObject.activeInHierarchy)
-        {
-            if (moveable)
-            {
-                moveDistance += speed * Time.deltaTime;
-                transform.position = pathCreator.path.GetPointAtDistance(moveDistance) + offset;
-            }
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Level")
-        {
-            moveable = false;
-            previousScale = collision.transform.localScale;
-            collision.transform.localScale = previousScale + (previousScale * 0.30f);
-        }
-    }
-
+    float currentDistance = 0;
     public void SetPositionOfPlayerLevelLocator(float distance)
     {
-        moveDistance = distance;
-        transform.position = pathCreator.path.GetPointAtDistance(moveDistance)+offset;
+        currentDistance = distance;
+        transform.position = pathCreator.path.GetPointAtDistance(currentDistance) +offset;
     }
 
-    public void OnTriggerExit2D(Collider2D collision)
+   
+    public bool OnMoveToNext(bool right,float distanceToMove)
     {
-        if (collision.CompareTag("Level"))
+        //if it si moveing returns false
+        if (moveable) return false;
+
+        //movable sets true incase it is false
+        moveable = true;
+        speed = Mathf.Sqrt(speed * speed);
+        speed *= right ? 1 : -1;
+        StopAllCoroutines();
+        StartCoroutine(MoveLocatorOfDistance());
+        return true;
+
+        IEnumerator MoveLocatorOfDistance()
         {
-            collision.transform.localScale = previousScale;
+            float timeDifference = Time.deltaTime;
+            float l_currentTempDistance = currentDistance;
+            transform.position = pathCreator.path.GetPointAtDistance(l_currentTempDistance) + offset;
+            while (moveable)
+            {
+                yield return new WaitForSeconds(timeDifference);
+                l_currentTempDistance += speed * timeDifference;
+                if(l_currentTempDistance >= distanceToMove + currentDistance && right)
+                {
+
+                    l_currentTempDistance = currentDistance + distanceToMove;
+                    moveable = false;
+                }
+                if (l_currentTempDistance <= currentDistance - distanceToMove && !right)
+                {
+                    print(moveable);
+
+                    l_currentTempDistance = currentDistance - distanceToMove;
+                    moveable = false;
+                }
+                if (l_currentTempDistance <= 0)
+                {
+                    l_currentTempDistance = 0;
+                    moveable = false;
+                }
+                transform.position = pathCreator.path.GetPointAtDistance(l_currentTempDistance) + offset;
+            }
+            currentDistance = l_currentTempDistance;
         }
     }
 }
