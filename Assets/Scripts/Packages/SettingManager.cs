@@ -38,7 +38,7 @@ public class SettingManager: MonoBehaviour
         _saturationSlider.maxValue = 100;
         _saturationSlider.minValue = -100;
 
-        _audioSlider.maxValue = 1;
+        _audioSlider.maxValue = 0.5f;
         _audioSlider.minValue = 0;
 
         _musicSlider.maxValue = 0.5f;

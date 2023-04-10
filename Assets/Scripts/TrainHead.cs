@@ -25,8 +25,9 @@ public class TrainHead : MonoBehaviour
 
     }
 
- /*   private void FixedUpdate()
+    private void FixedUpdate()
     {
+        if (trainPath == null) return;
         if (!stop)
         {
             movementDistance += movementSpeed * Time.deltaTime;
@@ -39,23 +40,8 @@ public class TrainHead : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-    }*/
-    public IEnumerator MoveTrainOnPath(PathCreator trainPath)
-    {
-        while (!stop)
-        {
-            movementDistance += movementSpeed * Time.deltaTime;
-            transform.position = trainPath.path.GetPointAtDistance(movementDistance);
-            Quaternion rotation = trainPath.path.GetRotationAtDistance(movementDistance);
-            transform.rotation = new Quaternion(0, 0, -rotation.x, rotation.w);
-            if (movementDistance > trainPath.path.length)
-            {
-                stop = true;
-                Destroy(gameObject);
-            }
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
     }
+    
     IEnumerator DeactivateLight()
     {
         yield return new WaitForSeconds(0.3f);
@@ -64,6 +50,7 @@ public class TrainHead : MonoBehaviour
             headLight.enabled = true;
         }
         else headLight.enabled = false;
+        StopAllCoroutines();
     }
 
     void DestroyTrainHead()
@@ -78,14 +65,13 @@ public class TrainHead : MonoBehaviour
     public void SetTrainHeadOnTrack(PathCreator path)
     {
 
-        runningCoroutine =StartCoroutine(MoveTrainOnPath(path));
+        trainPath = path;
     }
 
     IEnumerator DestroyAfterFewSeconds()
     {
         yield return new WaitForSeconds(1);
-        StopCoroutine(runningCoroutine);
-
+        stop = true;
         Destroy(this.gameObject);
         StopAllCoroutines();
 

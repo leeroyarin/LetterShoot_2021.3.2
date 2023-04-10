@@ -54,7 +54,6 @@ public class LevelSelectionManager : MonoBehaviour
         if (currentSelectedLevel >= totalLevelCount || currentSelectedLevel >= availableLevelsCount) return;
         if (!playerLevelLocator.OnMoveToNext(true,distanceBetweenPointsInPath)) return;
         currentSelectedLevel += 1;
-        print(currentSelectedLevel);
 
 
     }
@@ -71,7 +70,7 @@ public class LevelSelectionManager : MonoBehaviour
         availableLevelsCount = PlayerData.PlayerCurrentLevel;
         if(PlayerData.PlayerCurrentLevel > totalLevelCount) availableLevelsCount = totalLevelCount;
 
-        currentSelectedLevel = PlayerData.PlayerCurrentLevel;
+        currentSelectedLevel = availableLevelsCount;
         int index = currentSelectedLevel - 1;
         float currentDistance = index * distanceBetweenPointsInPath;
 

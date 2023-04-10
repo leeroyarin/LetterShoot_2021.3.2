@@ -83,6 +83,9 @@ public class GameManager : MonoBehaviour
 //            AudioManager.Instance.PlaySound(SoundNames.TrainStart,1f);
             AudioManager.Instance.StartPlayingSFXOnLoop(SoundNames.TrainLoop,1f);
 
+
+            //day night cycle control
+            InputManager.InputManagerInstance.ActivateLights();
             dayNightPhase[(int)currentGamePhase].SetActive(false);
             currentGamePhase = (GamePhase)(m_questionAnswerList.Count % 4);
             dayNightPhase[(int)currentGamePhase].SetActive(true);

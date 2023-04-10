@@ -12,4 +12,7 @@
 
     public static readonly string Explosion = "Explosion";
 
+    public static readonly string BreakBox = "BoxBreak";
+    public static readonly string CoinsEarned = "CoinEarned";
+
 }

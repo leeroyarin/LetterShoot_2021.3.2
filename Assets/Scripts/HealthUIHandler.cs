@@ -11,6 +11,7 @@ public class HealthUIHandler : MonoBehaviour
     Toggle[] healthIcons;
     private void OnEnable()
     {
+        if (GameSceneManager.SceneManagerInstance.GetCurrentSceneName() == "Instructions") Destroy(this);
         EventManager.CorrectLetterHit += OnLetterHit;
     }
     private void Start()

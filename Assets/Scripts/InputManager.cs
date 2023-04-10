@@ -61,6 +61,14 @@ public class InputManager : MonoBehaviour
         currentInteractableShooter.EnableCannonLights(true);
 
     }
+    public void ChangeShooter(Shooter shooter)
+    {
+        currentInteractableShooter?.EnableCannonLights(false);
+        //gets the interface that is interactable to fire, look at
+        currentInteractableShooter = shooter.GetComponent<IInteractableShooter>();
+        currentInteractableShooter.EnableCannonLights(true);
+
+    }
 
     public void GetShooterToLookAt(Vector2 targetPosition)
     {
@@ -78,5 +86,17 @@ public class InputManager : MonoBehaviour
     {
         //helps to set reference of interface IInteractableShooter of any shooter 
         currentInteractableShooter = FindObjectOfType<Shooter>().GetComponent<IInteractableShooter>();
+    }
+
+    public void ActivateLights()
+    {
+        print("CAllED");
+        currentInteractableShooter?.EnableLightAfterSecondsCoroutine(2,true);
+    }
+
+
+    public void EnableCurrentShooter(bool enable)
+    {
+        currentInteractableShooter?.EnableAction(enable);
     }
 }

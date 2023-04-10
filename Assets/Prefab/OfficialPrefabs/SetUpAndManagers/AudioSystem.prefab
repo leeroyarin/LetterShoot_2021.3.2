@@ -107,16 +107,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 02a2ca3a1621e3443a39bb02d67a8cc8, type: 3}
   - soundName: HookHalt
     clip: {fileID: 8300000, guid: b90f9fff828821a4990c9f132ef5bc27, type: 3}
-  - soundName: TrainStart
-    clip: {fileID: 8300000, guid: 09e971fd3cfcc7647a06899077a75c13, type: 3}
-  - soundName: TrainRun
-    clip: {fileID: 8300000, guid: 95000ad8dc1ac24428c517a4a04edf04, type: 3}
-  - soundName: TrainEnd
-    clip: {fileID: 8300000, guid: be4f8bfbae5ae154c872f72d7b0077e1, type: 3}
   - soundName: TrainCompleteLoop
     clip: {fileID: 8300000, guid: d84452812667c174699cac94c471213c, type: 3}
   - soundName: Explosion
     clip: {fileID: 8300000, guid: bde204158b7c07d439ee2fce6f30c645, type: 3}
+  - soundName: BoxBreak
+    clip: {fileID: 8300000, guid: eeb63b4b087e79a4b89f839d857484ca, type: 3}
+  - soundName: CoinEarned
+    clip: {fileID: 8300000, guid: 7d044dbb6d67fce4a82ed6d0f49785ab, type: 3}
   loopingSounds: []
   musicSource: {fileID: 7893769598966099860}
   singleSFXSource: {fileID: 7893769598966099863}

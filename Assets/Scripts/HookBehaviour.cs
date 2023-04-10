@@ -34,8 +34,8 @@ public partial class HookBehaviour : MonoBehaviour
         {
             lineRenderer.enabled = false;
             lineRenderer.positionCount = 0;
-            lineRenderer.startWidth = 0.1f;
-            lineRenderer.endWidth = 0.1f;
+            lineRenderer.startWidth = 0.05f;
+            lineRenderer.endWidth = 0.05f;
         }
     }
 

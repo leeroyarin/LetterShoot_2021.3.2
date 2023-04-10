@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 class GameSceneManager : MonoBehaviour
@@ -9,13 +8,21 @@ class GameSceneManager : MonoBehaviour
     {
         get 
         { 
-            if (_sceneManager == null) _sceneManager = FindObjectOfType<GameSceneManager>();
+            if (_sceneManager == null)
+            {
+                _sceneManager = FindObjectOfType<GameSceneManager>();
+                if (_sceneManager == null)
+                {
+                    _sceneManager = Instantiate(_sceneManager.gameObject,AudioManager.Instance.transform).AddComponent<GameSceneManager>();
+                }
+            }
             return _sceneManager;
         }
     }
 
     private void Awake()
     {
+        PlayerPrefs.DeleteAll();
         if (_sceneManager == null)
         {
             _sceneManager = this;
@@ -25,13 +32,8 @@ class GameSceneManager : MonoBehaviour
             Destroy(this);
         }
 
-        EventManager.GameCompleted += OnGameComplete;
     }
 
-    private void OnDestroy()
-    {
-        EventManager.GameCompleted -= OnGameComplete;
-    }
     public void ChangeSceneOnName(string sceneName)
     {
         AudioManager.Instance.StopAllSoundAtOnce();
@@ -53,18 +55,9 @@ class GameSceneManager : MonoBehaviour
 
     public void OnSuccessfulGameComplete()
     {
+        if (SceneManager.GetActiveScene().name == "Instruction") return;
         if (SceneManager.GetActiveScene().buildIndex >= PlayerData.PlayerCurrentLevel) PlayerData.PlayerCurrentLevel++;
     }
 
-    void OnGameComplete(bool LevelHasCompleted)
-    {
-        if (LevelHasCompleted)
-        {
-            if (SceneManager.GetActiveScene().name == "Instruction") return;
-            if(SceneManager.GetActiveScene().buildIndex> PlayerData.PlayerCurrentLevel )
-            {
-                PlayerData.PlayerCurrentLevel++;
-            }
-        }
-    }
+    public string GetCurrentSceneName()=> SceneManager.GetActiveScene().name;
 }

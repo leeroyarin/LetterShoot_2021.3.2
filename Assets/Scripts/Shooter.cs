@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 
 public class Shooter : MonoBehaviour,IInteractableShooter
@@ -83,4 +84,24 @@ public class Shooter : MonoBehaviour,IInteractableShooter
         EventManager.CorrectLetterHit -= LetterRecieved;
 
     }
+
+    public void EnableLightAfterSecondsCoroutine(float time,bool enable)
+    {
+        StartCoroutine(EnableLightAfterSeconds(time));
+        IEnumerator EnableLightAfterSeconds(float time)
+        {
+            yield return new WaitForSeconds(time);
+            EnableCannonLights(enable);
+        }
+    }
+
+
+ 
+
+
+    public void EnableAction(bool enable)
+    {
+        activated = enable;
+    }
+ 
 }

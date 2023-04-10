@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainGameUIManager : MonoBehaviour
@@ -37,7 +35,6 @@ public class MainGameUIManager : MonoBehaviour
     public void ButtonFunction(string functionName)
     {
         Time.timeScale = 1;
-
         switch (functionName.ToUpper())
         {
             case "RESTART":
@@ -56,6 +53,10 @@ public class MainGameUIManager : MonoBehaviour
             case "LEVELSELECTION":
             case "LEVEL SELECTION":
                 GameSceneManager.SceneManagerInstance.ChangeSceneOnName("LevelSelection");
+                break;
+            case "INSTRUCTION":
+                GameSceneManager.SceneManagerInstance.ChangeSceneOnName("Instructions");
+
                 break;
         }
     }

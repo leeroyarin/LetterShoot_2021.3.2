@@ -9,4 +9,8 @@ internal interface IInteractableShooter
     void EnableCannonLights(bool enable);
 
     void DisableHarpoonForWhile();
+
+    void EnableLightAfterSecondsCoroutine(float time,bool enable);
+
+    void EnableAction(bool enable);
 }

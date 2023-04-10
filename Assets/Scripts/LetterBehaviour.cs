@@ -109,6 +109,8 @@ public class LetterBehaviour : MonoBehaviour,IOnCollisionWithHook
     public void OnCorrectLetterAction()
     {
         EventManager.CorrectLetterHit?.Invoke(true);
+        AudioManager.Instance.PlaySound(SoundNames.CoinsEarned);
+
     }
 
     public void EndAnimation()
@@ -117,6 +119,12 @@ public class LetterBehaviour : MonoBehaviour,IOnCollisionWithHook
         this.transform.SetParent(objectToParentOn, false);
         this.transform.localPosition = Vector3.zero;
         this.gameObject.SetActive(false);
+    }
+
+    public void OpenBox()
+    {
+        AudioManager.Instance.PlaySound(SoundNames.BreakBox);
+
     }
 }
 

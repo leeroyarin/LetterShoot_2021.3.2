@@ -31,7 +31,7 @@ public class PlayerLevelLocator: MonoBehaviour
 
         IEnumerator MoveLocatorOfDistance()
         {
-            float timeDifference = Time.deltaTime;
+            float timeDifference = Time.fixedDeltaTime;
             float l_currentTempDistance = currentDistance;
             transform.position = pathCreator.path.GetPointAtDistance(l_currentTempDistance) + offset;
             while (moveable)
@@ -46,7 +46,6 @@ public class PlayerLevelLocator: MonoBehaviour
                 }
                 if (l_currentTempDistance <= currentDistance - distanceToMove && !right)
                 {
-                    print(moveable);
 
                     l_currentTempDistance = currentDistance - distanceToMove;
                     moveable = false;

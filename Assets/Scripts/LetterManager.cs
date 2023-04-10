@@ -93,6 +93,8 @@ public class LetterManager : MonoBehaviour
     {
 
         Instantiate(trainHeadPrefab, this.transform).GetComponent<TrainHead>().SetTrainHeadOnTrack(path);
+        yield return new WaitForSeconds(0.05f);
+
         while (!_gameCompleted)
         {
             yield return new WaitForSeconds(armySpawnInterval);
@@ -117,11 +119,10 @@ public class LetterManager : MonoBehaviour
         void SummonLetterTrainBoxAndContainer(int letterArmyIndex)
         {
             ActivateGameObject(letterTrainBoxesList[letterArmyIndex]);
-
-            
-
         }
         void ActivateGameObject(GameObject letterBox)
+            {
+            try
             {
                 letterBox.SetActive(true);
                 char letterForArmy;
@@ -135,6 +136,14 @@ public class LetterManager : MonoBehaviour
                 letterBehaviour.MakeTheObjectUndrestroyed();
                 letterBehaviour.gameObject.SetActive(true);
             }
+            catch
+            {
+                letterTrainBoxesList.Remove(letterBox);
+                Destroy(letterBox);
+                ActivateGameObject(InstantiateTrainBoxAndAddToTheList());
+
+            }
+        }
     }
 
     char GetRandomWrongLetter()

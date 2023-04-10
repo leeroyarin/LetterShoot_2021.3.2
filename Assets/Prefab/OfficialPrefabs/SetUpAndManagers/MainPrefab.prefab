@@ -346,7 +346,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.468
   m_Color: {r: 1, g: 0.8044408, b: 0, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.16
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: f100d4ca935f02b86b30c871a19e12748581e744eb79a60337d3482d75ae61fd43c349f73924791a4f5cda8483c8b649
@@ -1665,7 +1665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectOriginPoint: {fileID: 0}
   maximumLetters: 24
-  armySpawnInterval: 1.58
+  armySpawnInterval: 1.63
   path: {fileID: 0}
   letterTrainBoxPrefab: {fileID: 4443789931523343819, guid: 0e022595a88fb614a9278f3af498ee3c, type: 3}
   letterHolder: {fileID: 0}
@@ -3917,7 +3917,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.468
   m_Color: {r: 1, g: 0.8044408, b: 0, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.16
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: f100d4ca935f02b86b30c871a19e12748581e744eb79a60337d3482d75ae61fd43c349f73924791a4f5cda8483c8b649
