@@ -93,7 +93,7 @@ public class LetterManager : MonoBehaviour
     {
 
         Instantiate(trainHeadPrefab, this.transform).GetComponent<TrainHead>().SetTrainHeadOnTrack(path);
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.5f);
 
         while (!_gameCompleted)
         {
@@ -114,7 +114,7 @@ public class LetterManager : MonoBehaviour
                 }
             }
             ActivateGameObject(InstantiateTrainBoxAndAddToTheList());
-            maximumLetters++;
+            //maximumLetters++;
         }
         void SummonLetterTrainBoxAndContainer(int letterArmyIndex)
         {

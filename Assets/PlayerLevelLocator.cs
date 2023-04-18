@@ -16,7 +16,7 @@ public class PlayerLevelLocator: MonoBehaviour
     }
 
    
-    public bool OnMoveToNext(bool right,float distanceToMove)
+    public bool OnMoveToNextPointOnMapPath(bool right,float distanceToMove)
     {
         //if it si moveing returns false
         if (moveable) return false;

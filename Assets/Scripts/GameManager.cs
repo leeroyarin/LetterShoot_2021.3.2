@@ -23,13 +23,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]LetterManager m_letterManager;
 
     [SerializeField] List<QuestionAnswer> questionAnswersSet;
-    Queue<QuestionAnswer> m_questionAnswerList;
+    Queue<QuestionSet> m_questionAnswerList;
 
-
+    [SerializeField] int currentLevel;
     [SerializeField] GameObject[] dayNightPhase;
     private void Awake()
     {
         _instance = this;
+        DeactivateAllDayNightPhase();
     }
 
     private void Start()
@@ -62,9 +63,14 @@ public class GameManager : MonoBehaviour
     private void SortQuestionsList()
     {
         var random = new System.Random();
-        QuestionAnswer[] l_UnsortedList = questionAnswersSet.OrderBy(x => random.Next()).ToArray();
+        QuestionSet[] l_UnsortedList = QuizManager.GetQuestionsByLevelAndIndex(currentLevel).OrderBy(x => random.Next()).ToArray();
         questionAnswersSet.Clear();
-        m_questionAnswerList = new Queue<QuestionAnswer>(l_UnsortedList);
+        m_questionAnswerList = new Queue<QuestionSet>(l_UnsortedList);
+        if (m_questionAnswerList.Count < 4) print("EROR IN List");
+        while(m_questionAnswerList.Count > 4)
+        {
+            m_questionAnswerList.Dequeue();
+        }
         
     }
 
@@ -76,11 +82,10 @@ public class GameManager : MonoBehaviour
             EventManager.GameCompleted?.Invoke(true);
         }else{
 
-            QuestionAnswer questionAnswer = m_questionAnswerList.Dequeue();
-            m_letterManager.SetQuestionAndAnswer(questionAnswer.Question, questionAnswer.Answer,questionAnswer.WrongLetters);
-            LetterHolder.LetterHolderInstance.AddLettersInLetterHolder(questionAnswer.Answer.ToArray());
+            QuestionSet questionAnswer = m_questionAnswerList.Dequeue();
+            m_letterManager.SetQuestionAndAnswer(questionAnswer.Question, questionAnswer.AnswerWord,questionAnswer.IncorrectOption);
+            LetterHolder.LetterHolderInstance.AddLettersInLetterHolder(questionAnswer.AnswerWord.ToArray());
             LetterHolder.LetterHolderInstance.SetQuestion(questionAnswer.Question);
-//            AudioManager.Instance.PlaySound(SoundNames.TrainStart,1f);
             AudioManager.Instance.StartPlayingSFXOnLoop(SoundNames.TrainLoop,1f);
 
 
@@ -99,6 +104,11 @@ public class GameManager : MonoBehaviour
     public void WaitForWhileAndChangeQuestion()
     {
         Invoke(nameof(CheckIfAnyQuestionsLeft), 1f);
+    }
+
+    public void DeactivateAllDayNightPhase()
+    {
+        foreach(GameObject phase in dayNightPhase) phase.SetActive(false);  
     }
     #region Classes
     [System.Serializable]

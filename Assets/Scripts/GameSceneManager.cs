@@ -22,16 +22,7 @@ class GameSceneManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.DeleteAll();
-        if (_sceneManager == null)
-        {
-            _sceneManager = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-
+        _sceneManager = this;
     }
 
     public void ChangeSceneOnName(string sceneName)

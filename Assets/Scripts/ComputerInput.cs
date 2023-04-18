@@ -2,18 +2,36 @@
 
 public class ComputerInput : InputType
 {
-    public override void InputAction(InputManager inputManager)
+    public override void InputAction(InputManager p_inputManager)
     {
-        /*
-         * if the screen mouse position is moved then it helps to look at something
-         * checks if the 
-         * if the mouse button is clicked then onrelease function is callled that is  responsible for checking if the touch position has shooter to change with or is it empty space to shoot at
-         */
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (inputManager.HasShooter) inputManager.GetShooterToLookAt(mousePosition);
+        ///<summary>
+        ///Gets the mousePosition 
+        ///Makes the currently activated harpoon shooter to look towards the mouse position
+        ///If the mouse gets clicked then necessary action is done
+        /// </summary>
+        Vector2 l_mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (p_inputManager.hasActiveHarpoonShooter) p_inputManager.GetHarpoonShooterToLookAt(l_mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
-            OnRelease(mousePosition, inputManager);
+            GetAction(p_position:l_mousePosition, p_inputManager: p_inputManager);
+        }
+    }
+    void GetAction(Vector2 p_position, InputManager p_inputManager)
+    {
+        ///<summary>
+        ///checks if there is any harpoon shooter in currently clicked position
+        ///if yes the clicked shooter gets activated instead
+        ///makes the harpoon to launch hook if it shooter is active
+        ///</summary>
+        Collider2D l_hit = Physics2D.OverlapCircle(p_position, 0.3f);
+        if (l_hit?.tag == "Shooter")
+        {
+            p_inputManager.ChangeCurrentlyActiveHarpoonShooter(l_hit);
+            return;
+        }
+        if (p_inputManager.hasActiveHarpoonShooter)
+        {
+            p_inputManager.GetHarpoonShooterToLaunchHook();
         }
     }
 }

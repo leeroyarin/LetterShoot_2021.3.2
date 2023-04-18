@@ -103,7 +103,7 @@ public class Tutorial : MonoBehaviour
         StopCoroutine(textPrintingCoroutine);
         doNext = false;
         animator.Play("ChooseHarpoon");
-        yield return new WaitUntil(() => InputManager.InputManagerInstance.HasShooter);
+        yield return new WaitUntil(() => InputManager.InputManagerInstance.hasActiveHarpoonShooter);
         StopCoroutine(textPrintingCoroutine);
         animator.Play("ShootTheLetter");
         doNext = false;

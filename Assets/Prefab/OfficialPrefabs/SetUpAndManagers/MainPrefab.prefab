@@ -888,6 +888,50 @@ MonoBehaviour:
   - {x: -10.856306, y: -8.982342, z: 0}
   - {x: 6.2849903, y: 10.18236, z: 0}
   - {x: 5.4082775, y: 10.322086, z: 0}
+--- !u!1 &2621735691743414982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7254883875914417228}
+  - component: {fileID: 4645282287625059090}
+  m_Layer: 0
+  m_Name: GameSceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7254883875914417228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2621735691743414982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5139955154727968113}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4645282287625059090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2621735691743414982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a98429a935838499ae15d772bb9d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3378167856171505030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,6 +1405,7 @@ Transform:
   - {fileID: 5139955155615062613}
   - {fileID: 5139955156745128148}
   - {fileID: 5139955154877359876}
+  - {fileID: 7254883875914417228}
   m_Father: {fileID: 118597979731929019}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1470,7 +1515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5139955154844155941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.9540143, y: 1.3211193, z: -10.580217}
+  m_LocalPosition: {x: -5.587067, y: 0.59695035, z: -9.900217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1538,7 +1583,7 @@ MonoBehaviour:
     m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_Duration: 1
-    m_NoiseOffsets: {x: 0, y: 0, z: 0}
+    m_NoiseOffsets: {x: 549.7064, y: -813.6106, z: 34.814697}
 --- !u!1 &5139955154877359879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,7 +1709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectOriginPoint: {fileID: 0}
-  maximumLetters: 24
+  maximumLetters: 14
   armySpawnInterval: 1.63
   path: {fileID: 0}
   letterTrainBoxPrefab: {fileID: 4443789931523343819, guid: 0e022595a88fb614a9278f3af498ee3c, type: 3}
@@ -2341,6 +2386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HasShooter: 0
+  harpoonLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &5139955155679050101
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,9 +2885,9 @@ MonoBehaviour:
   m_letterHolder: {fileID: 0}
   m_letterManager: {fileID: 5139955155026865044}
   questionAnswersSet:
-  - question: Who are you?
-    answer: ARIN
-    wrongLetters: BCDEFGHJKLMOPQSTUVWXYZ
+  - question: What is the plural form of "goose"?
+    answer: Geese
+    wrongLetters: ABCDFHIJKMNOPQRTUVWXYZ
   - question: Past tense of 'EAT'
     answer: ATE
     wrongLetters: BCDFGHIJKLMNOPQRSUVWXYZ
@@ -2849,6 +2897,28 @@ MonoBehaviour:
   - question: Past tense of 'GO'
     answer: WENT
     wrongLetters: ABCDFGHIJKLMOPQRSUVXYZ
+  - question: What is the past participle of "write"?
+    answer: Written
+    wrongLetters: ABCDFGHJKLMNOPQSUVXYZ
+  - question: What is the comparative form of "hot"?
+    answer: Hotter
+    wrongLetters: ABCDFGIJKLMNPQSUVWXYZ
+  - question: What is the comparative form of "far"?
+    answer: Farther
+    wrongLetters: BCDGIJKLMNOPQSUVWXYZ
+  - question: What is the past tense of "buy"
+    answer: Bought
+    wrongLetters: ACDEFIJKLMNOPQRSVWXYZ
+  - question: What is the plural form of "deer"?
+    answer: Deer
+    wrongLetters: BCDFGHJKLMNOPQSTUVWXYZ
+  - question: What is the superlative form of "funny"?
+    answer: Funniest
+    wrongLetters: ABCDGHJKLMOPQRVWXYZ
+  - question: What is the past participle of "choose"?
+    answer: Chosen
+    wrongLetters: ABDFGIJKLMPQRSTUVWXYZ
+  currentLevel: 0
   dayNightPhase:
   - {fileID: 5139955156431426026}
   - {fileID: 5139955156138727834}
@@ -2932,7 +3002,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5139955155922095016}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.9540143, y: 1.3211193, z: -10.580217}
+  m_LocalPosition: {x: -5.587067, y: 0.59695035, z: -9.900217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2967,18 +3037,18 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.7499995
+  orthographic size: 5.36
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 231
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3003,12 +3073,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RenderShadows: 0
+  m_RequiresDepthTextureOption: 0
+  m_RequiresOpaqueTextureOption: 0
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -3020,7 +3090,7 @@ MonoBehaviour:
   m_StopNaN: 0
   m_Dithering: 0
   m_ClearDepth: 1
-  m_AllowXRRendering: 1
+  m_AllowXRRendering: 0
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2

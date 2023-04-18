@@ -3097,9 +3097,125 @@ PrefabInstance:
       value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: currentLevel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
       propertyPath: m_letterHolder
       value: 
       objectReference: {fileID: 1422364953}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[1].answer
+      value: Bought
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[2].answer
+      value: Funniest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[3].answer
+      value: Chosen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[4].answer
+      value: Chosen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[5].answer
+      value: Chosen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[6].answer
+      value: Chosen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[7].answer
+      value: Chosen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[8].answer
+      value: Chosen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[9].answer
+      value: Chosen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[1].question
+      value: What is the past tense of "buy"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[2].question
+      value: What is the superlative form of "funny"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[3].question
+      value: What is the past participle of "choose"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[4].question
+      value: What is the past participle of "choose"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[5].question
+      value: What is the past participle of "choose"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[6].question
+      value: What is the past participle of "choose"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[7].question
+      value: What is the past participle of "choose"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[8].question
+      value: What is the past participle of "choose"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[9].question
+      value: What is the past participle of "choose"?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[1].wrongLetters
+      value: ACDEFIJKLMNPQRSVWXYZ
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[2].wrongLetters
+      value: ABCDGHJKLMOPQRVWXYZ
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[3].wrongLetters
+      value: ABDFGIJKLMPQRSTUVWXYZ
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[4].wrongLetters
+      value: ABDFGIJKLMPQRSTUVWXYZ
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[5].wrongLetters
+      value: ABDFGIJKLMPQRSTUVWXYZ
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[6].wrongLetters
+      value: ABDFGIJKLMPQRSTUVWXYZ
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[7].wrongLetters
+      value: ABDFGIJKLMPQRSTUVWXYZ
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[8].wrongLetters
+      value: ABDFGIJKLMPQRSTUVWXYZ
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.data[9].wrongLetters
+      value: ABDFGIJKLMPQRSTUVWXYZ
+      objectReference: {fileID: 0}
     - target: {fileID: 5139955155922095014, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
       propertyPath: orthographic size
       value: 7.6374993

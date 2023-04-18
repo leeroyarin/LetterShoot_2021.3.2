@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 5
+  m_CurrentQuality: 2
   m_QualitySettings:
   - serializedVersion: 2
     name: Very Low
@@ -89,15 +89,15 @@ QualitySettings:
     shadowNearPlaneOffset: 3
     shadowCascade2Split: 0.33333334
     shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
-    shadowmaskMode: 0
+    shadowmaskMode: 1
     skinWeights: 2
     textureQuality: 0
-    anisotropicTextures: 1
+    anisotropicTextures: 0
     antiAliasing: 0
     softParticles: 0
     softVegetation: 0
-    realtimeReflectionProbes: 0
-    billboardsFaceCameraPosition: 0
+    realtimeReflectionProbes: 1
+    billboardsFaceCameraPosition: 1
     vSyncCount: 1
     lodBias: 0.7
     maximumLODLevel: 0
@@ -107,12 +107,12 @@ QualitySettings:
     streamingMipmapsRenderersPerFrame: 512
     streamingMipmapsMaxLevelReduction: 2
     streamingMipmapsMaxFileIORequests: 1024
-    particleRaycastBudget: 64
+    particleRaycastBudget: 652
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 0}
+    customRenderPipeline: {fileID: 11400000, guid: 9b2372bcebc41a245b2909deda2a4c3c, type: 2}
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: High

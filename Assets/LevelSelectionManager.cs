@@ -12,7 +12,7 @@ public class LevelSelectionManager : MonoBehaviour
 
     float distanceBetweenPointsInPath;
     [SerializeField] PlayerLevelLocator playerLevelLocator;
-    [SerializeField] PathCreator path;
+    [SerializeField] PathCreator mapTrackPath;
     [SerializeField] Transform levelPointCollector;
     [SerializeField] List<Transform> levelPoints;
 
@@ -29,7 +29,7 @@ public class LevelSelectionManager : MonoBehaviour
             
             //gets values from the path
             int levelPointsCount = levelPoints.Count;
-            float pathLength = path.path.length;
+            float pathLength = mapTrackPath.path.length;
 
             totalLevelCount = levelPointsCount;
             
@@ -41,7 +41,7 @@ public class LevelSelectionManager : MonoBehaviour
             int level = 1;
             foreach (Transform levelPoint in levelPoints)
             {
-                levelPoint.position = path.path.GetPointAtDistance(pathDistance);
+                levelPoint.position = mapTrackPath.path.GetPointAtDistance(pathDistance);
                 levelPoint.GetComponentInChildren<TextMeshPro>().text = ("Level " + level);
                 pathDistance += distanceBetweenPointsInPath;
                 level++;
@@ -52,7 +52,7 @@ public class LevelSelectionManager : MonoBehaviour
     public void OnNextLevelClick()
     {
         if (currentSelectedLevel >= totalLevelCount || currentSelectedLevel >= availableLevelsCount) return;
-        if (!playerLevelLocator.OnMoveToNext(true,distanceBetweenPointsInPath)) return;
+        if (!playerLevelLocator.OnMoveToNextPointOnMapPath(true,distanceBetweenPointsInPath)) return;
         currentSelectedLevel += 1;
 
 
@@ -60,19 +60,24 @@ public class LevelSelectionManager : MonoBehaviour
     public void OnPreviousLevelClick()
     {
         if (currentSelectedLevel <= 1) return;
-        if (!playerLevelLocator.OnMoveToNext(false, distanceBetweenPointsInPath)) return;
+        if (!playerLevelLocator.OnMoveToNextPointOnMapPath(false, distanceBetweenPointsInPath)) return;
         currentSelectedLevel -= 1;
 
     }
 
     void SetPlayerLevelLocatorPosition()
     {
+       
+        //sets the current available levels count to players current level
         availableLevelsCount = PlayerData.PlayerCurrentLevel;
-        if(PlayerData.PlayerCurrentLevel > totalLevelCount) availableLevelsCount = totalLevelCount;
 
+        //incase the current available level of player exceeds more that total available level, available level becomes as much as total level
+        if(availableLevelsCount > totalLevelCount) availableLevelsCount = totalLevelCount;
+
+        //then finally the player's current level count is set according to current available count
         currentSelectedLevel = availableLevelsCount;
-        int index = currentSelectedLevel - 1;
-        float currentDistance = index * distanceBetweenPointsInPath;
+        int l_index = currentSelectedLevel - 1;
+        float currentDistance = l_index * distanceBetweenPointsInPath;
 
         playerLevelLocator.SetPositionOfPlayerLevelLocator(currentDistance);
     }

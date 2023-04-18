@@ -470,7 +470,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7893769599788463095}
   - component: {fileID: 7893769599788463093}
-  - component: {fileID: 7893769599788463092}
   m_Layer: 0
   m_Name: MasterObject
   m_TagString: Untagged
@@ -507,18 +506,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalVolume: {fileID: 7893769598627278328}
   colorAdjustments: {fileID: 0}
---- !u!114 &7893769599788463092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7893769599788463094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a98429a935838499ae15d772bb9d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7893769600031558548
 GameObject:
   m_ObjectHideFlags: 0

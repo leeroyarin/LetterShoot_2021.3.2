@@ -2348,9 +2348,17 @@ PrefabInstance:
       value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: currentLevel
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
       propertyPath: m_letterHolder
       value: 
       objectReference: {fileID: 1422364953}
+    - target: {fileID: 5139955155736169240, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
+      propertyPath: questionAnswersSet.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5139955155922095014, guid: 0aad4705dc4045e4dac7a0625d568ebc, type: 3}
       propertyPath: orthographic size
       value: 6.0312495

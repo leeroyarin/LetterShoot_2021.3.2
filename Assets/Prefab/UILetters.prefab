@@ -65,7 +65,7 @@ SortingGroup:
   m_GameObject: {fileID: 3729088271562972926}
   m_Enabled: 1
   m_SortingLayerID: 1236715651
-  m_SortingLayer: 8
+  m_SortingLayer: 12
   m_SortingOrder: 0
 --- !u!1 &3729088272298894240
 GameObject:
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -154,7 +154,7 @@ SortingGroup:
   m_GameObject: {fileID: 3729088272298894240}
   m_Enabled: 1
   m_SortingLayerID: 1236715651
-  m_SortingLayer: 8
+  m_SortingLayer: 12
   m_SortingOrder: 0
 --- !u!1 &3729088272445794088
 GameObject:
