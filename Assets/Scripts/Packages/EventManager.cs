@@ -4,14 +4,6 @@ using UnityEngine;
 
 public  class EventManager : MonoBehaviour
 {
-    public static EventManager instance;
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
     public static Action<char, LetterBehaviour> LetterRecieved;
     public static Action wordCompleted;
     public static Action<bool> GameCompleted;

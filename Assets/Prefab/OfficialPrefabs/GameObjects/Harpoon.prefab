@@ -285,7 +285,7 @@ MonoBehaviour:
   _hookRigidBody: {fileID: 6181268739470197960}
   hookCollider: {fileID: 6181268739470197961}
   _hookStates: 0
-  _revertingSpeed: 10
+  _revertingSpeed: 20
 --- !u!1 &6181268739824320133
 GameObject:
   m_ObjectHideFlags: 0

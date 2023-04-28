@@ -53,8 +53,8 @@ public class Shooter : MonoBehaviour,IInteractableShooter
     /// <param name="p_enable">Whether to enable or disable the Harpoon light.</param>
     public void EnableHarpoonLights(bool p_enable)
     {
-        _IsActivated = p_enable; 
-        
+        _IsActivated = p_enable;
+        if (GameSceneManager.SceneManagerInstance.GetCurrentSceneName() == "StartMenu") return;
         if (GameManager.Instance.currentGamePhase == GameManager.GamePhase.Night)
         {
             harpoonLight.SetActive(p_enable);

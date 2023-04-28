@@ -333,6 +333,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1698322181011555519, guid: 1648478a03396da4aa2f16b1035b7de6, type: 3}
   m_PrefabInstance: {fileID: 5874021366696386740}
   m_PrefabAsset: {fileID: 0}
+--- !u!210 &3678478796704293995
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5049960463650153483}
+  m_Enabled: 1
+  m_SortingLayerID: -1269143963
+  m_SortingLayer: 15
+  m_SortingOrder: 119
 --- !u!1001 &8224613019815459856
 PrefabInstance:
   m_ObjectHideFlags: 0

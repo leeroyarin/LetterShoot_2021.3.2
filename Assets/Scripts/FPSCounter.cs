@@ -8,8 +8,8 @@ public class FPSCounter : MonoBehaviour
     private float _deltaTime;
     private void Awake()
     {
-/*        PlayerPrefs.DeleteAll();
-*/    }
+//        PlayerPrefs.DeleteAll();
+    }
     private void Update()
     {
         // Update deltaTime

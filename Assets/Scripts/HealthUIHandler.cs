@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class HealthUIHandler : MonoBehaviour
@@ -9,27 +10,27 @@ public class HealthUIHandler : MonoBehaviour
 
     int currentHealthCount;
     Toggle[] healthIcons;
+
     private void OnEnable()
     {
-        if (GameSceneManager.SceneManagerInstance.GetCurrentSceneName() == "Instructions") Destroy(this);
+        if (GameSceneManager.SceneManagerInstance.GetCurrentSceneName() == "Instructions") 
+        { 
+            Destroy(this);
+        }
         EventManager.CorrectLetterHit += OnLetterHit;
+        EventManager.wordCompleted += RestoreHealth;
     }
     private void Start()
     {
         CreateAndReferenceHealthToggleChild();
-      
     }
 
+    /// <summary>
+    /// Initializes and instantiates the health icon toggles as children of the current game object.
+    /// Sets the current health count to the total health count and creates an array of Toggle components to store the health icons.
+    /// </summary>
     private void CreateAndReferenceHealthToggleChild()
-    {
-        /*
-        //gets array of gameobjects with tag shooter
-        //GameObject[] shooter = GameObject.FindGameObjectsWithTag("Shooter");
-
-        //and sets total health count according to the number of shooter tagged gameobjects
-        totalHealthCount = shooter.Length;
-        */
-        
+    {        
         currentHealthCount = totalHealthCount;
         healthIcons = new Toggle[totalHealthCount];
         GameObject objectExample = GetComponentInChildren<Toggle>().gameObject;
@@ -41,9 +42,13 @@ public class HealthUIHandler : MonoBehaviour
         }
     }
 
-    private void OnLetterHit(bool correctLetter)
+    /// <summary>
+    /// This method is called when a letter is revealed
+    /// </summary>
+    /// <param name="p_correctLetter">A boolean indicating whether the hit letter was correct or not.</param>
+    private void OnLetterHit(bool p_correctLetter)
     {
-        if (!correctLetter) 
+        if (!p_correctLetter) 
         {
             currentHealthCount--;
             if(currentHealthCount < 0)
@@ -51,16 +56,39 @@ public class HealthUIHandler : MonoBehaviour
                 return;
             }
             healthIcons[currentHealthCount].isOn = false;
-            if(currentHealthCount == 0)
+            healthIcons[currentHealthCount].GetComponent<Light2D>().enabled = false;
+            if (currentHealthCount == 0)
             {
                 EventManager.GameCompleted?.Invoke(false);
             }
+        }else if (currentHealthCount < totalHealthCount)
+        {
+            AddHealth();
+
+        }
+
+        void AddHealth()
+        {
+            AudioManager.Instance.PlaySound(SoundNames.HealthGain);
+            healthIcons[currentHealthCount].isOn = true;
+            healthIcons[currentHealthCount].GetComponent<Light2D>().enabled = true;
+            currentHealthCount++;
+        }
+    }
+
+    void RestoreHealth()
+    {
+        currentHealthCount = totalHealthCount;
+        foreach(Toggle health in healthIcons)
+        {
+            health.isOn = true;
+            health.GetComponent<Light2D>().enabled = true;
         }
     }
 
     private void OnDestroy()
     {
         EventManager.CorrectLetterHit -= OnLetterHit;
-
+        EventManager.wordCompleted -= RestoreHealth;
     }
 }

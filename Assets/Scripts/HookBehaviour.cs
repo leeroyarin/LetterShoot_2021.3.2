@@ -26,6 +26,8 @@ public partial class HookBehaviour : MonoBehaviour
 
     private void Start()
     {
+ //       Application.targetFrameRate = 7;
+
         //Sets Reference of the AudioManager
         audioManager = AudioManager.Instance;
         SetLineRendererValues();
@@ -37,6 +39,11 @@ public partial class HookBehaviour : MonoBehaviour
             lineRenderer.startWidth = 0.05f;
             lineRenderer.endWidth = 0.05f;
         }
+
+
+
+
+
     }
 
     private void Update()
@@ -77,13 +84,13 @@ public partial class HookBehaviour : MonoBehaviour
         void RevertAction()
         {
             //Reverts the hook at constant speed according to the hook spawn point position
-            transform.position += (_hookSpawnPointTransform.position - this.transform.position).normalized * _revertingSpeed * Time.deltaTime;
+            transform.position += (_hookSpawnPointTransform.position - this.transform.position).normalized * _revertingSpeed * Time.fixedDeltaTime;
 
             //if the letter to grab i.w. LetterBox is not null then the letterBox's position is set according to the hook's position
             if (letterToGrab != null) letterToGrab.transform.position = transform.position;
 
             //if the hook gets close to the hook 
-            if (Vector2.Distance(_hookSpawnPointTransform.position, this.transform.position) < 0.3f)
+            if (Vector2.Distance(_hookSpawnPointTransform.position, this.transform.position) < 1f)
             {
                 //Action
                 RestHook();

@@ -1,22 +1,29 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
+// This script manages the quiz questions and provides methods to get questions by level and index.
+// It loads a TextAsset containing quiz data in JSON format and deserializes it into QuizData object.
+// It also provides static access to QuizData object through the quiz variable.
 public class QuizManager : MonoBehaviour
 {
     [SerializeField] TextAsset quizAsset;
 
-
+    // A static reference to the QuizData object
     public static QuizData quiz;
 
     private void Awake()
     {
         if (quiz == null)
         {
+            // Deserialize the JSON data in quizAsset into QuizData object if it hasn't already been done
             quiz = JsonUtility.FromJson<QuizData>(quizAsset.text);
         }
     }
 
+    /// <summary>
+    /// Gets an array of QuestionSet objects by level number.
+    /// </summary>
+    /// <param name="l_levelNumber">The level number of questions to get.</param>
+    /// <returns>An array of QuestionSet objects for the given level number.</returns>
     public static QuestionSet[] GetQuestionsByLevelAndIndex(int l_levelNumber)
     {
         QuestionSet[] l_level;
@@ -53,20 +60,17 @@ public class QuizManager : MonoBehaviour
                 l_level = quiz.Level10;
                 break;
             default:
-                Debug.Log("ERROR");
-                return quiz.Level1;
+                return quiz.Instruction;
         }
         return l_level;
     }
 }
-
+#region Json
 [System.Serializable]
 public class QuestionSet
 {
-    public int QuestionNo;
     public string Question;
     public string AnswerWord;
-    public int AnswerLetters;
     public string IncorrectOption;
 }
 [System.Serializable]
@@ -82,6 +86,8 @@ public class QuizData
     public QuestionSet[] Level8;
     public QuestionSet[] Level9;
     public QuestionSet[] Level10;
+    public QuestionSet[] Instruction;
 
     
 }
+#endregion

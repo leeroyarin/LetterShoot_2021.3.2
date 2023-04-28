@@ -103,6 +103,7 @@ public class InputManager : MonoBehaviour
     {
         _currentInteractableShooter?.EnableHarpoonLights(false);
         //gets the interface that is interactable to fire, look at
+        AudioManager.Instance.PlaySound(SoundNames.HookHalt);
         _currentInteractableShooter = p_shooterCollider.GetComponent<IInteractableShooter>();
         _currentInteractableShooter.EnableHarpoonLights(true);
 

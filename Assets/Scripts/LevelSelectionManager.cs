@@ -16,11 +16,13 @@ public class LevelSelectionManager : MonoBehaviour
     [SerializeField] Transform levelPointCollector;
     [SerializeField] List<Transform> levelPoints;
 
+    // Sets up the level points on the map and sets the player's starting position
     private void Awake()
     {
         SetLevelPointOnMap();
         SetPlayerLevelLocatorPosition();
 
+        // Sets the position of each level point on the map based on the distance between points
         void SetLevelPointOnMap()
         {
             //Get all the reference of the available transforms in child
@@ -35,8 +37,8 @@ public class LevelSelectionManager : MonoBehaviour
             
             //finds the exact distance placement for each levelPoints
             distanceBetweenPointsInPath = pathLength / levelPointsCount;
-            
-            //counter for the loop
+
+            // Set the position of each level point on the path and set its label text
             float pathDistance = 0;
             int level = 1;
             foreach (Transform levelPoint in levelPoints)
@@ -49,22 +51,36 @@ public class LevelSelectionManager : MonoBehaviour
         }
     }
 
+    // Called when the "Next Level" button is clicked
     public void OnNextLevelClick()
     {
+        // If the player has reached the last level or the last unlocked level, do nothing
         if (currentSelectedLevel >= totalLevelCount || currentSelectedLevel >= availableLevelsCount) return;
+
+        // Move the player to the next level point on the map
         if (!playerLevelLocator.OnMoveToNextPointOnMapPath(true,distanceBetweenPointsInPath)) return;
+
+        // Increment the current selected level
         currentSelectedLevel += 1;
 
 
     }
+
+    // Called when the "Previous Level" button is clicked
     public void OnPreviousLevelClick()
     {
+        // If the player is on the first level, do nothing
         if (currentSelectedLevel <= 1) return;
+
+        // Move the player to the previous level point on the map
         if (!playerLevelLocator.OnMoveToNextPointOnMapPath(false, distanceBetweenPointsInPath)) return;
+
+        // Decrement the current selected level
         currentSelectedLevel -= 1;
 
     }
 
+    // Sets the player's starting position based on their current level progress
     void SetPlayerLevelLocatorPosition()
     {
        

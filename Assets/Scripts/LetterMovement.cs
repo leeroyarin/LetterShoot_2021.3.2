@@ -6,37 +6,41 @@ public class LetterMovement : MonoBehaviour
 {
     public float movementSpeed;
     [SerializeField] RectTransform TextRect;
-    Transform cameraTransform;
-    Coroutine currentCoroutine;
-    Transform hookTransform;
+
+    Transform _cameraTransform;
+    Coroutine _currentCoroutine;
+    Transform _hookTransform;
 
     private void Awake()
     {
-        cameraTransform = Camera.main.transform;
+        _cameraTransform = Camera.main.transform;
     }
     void Update()
     {
-        TextRect.LookAt(TextRect.position + cameraTransform.forward);
+        TextRect.LookAt(TextRect.position + _cameraTransform.forward);
     }
 
+    /// <summary>
+    /// Coroutine to move the letter towards the hook
+    /// </summary>
     public IEnumerator MoveAlongHook()
     {
        
-        while (Vector2.Distance(hookTransform.position, transform.position) >= 2)
+        while (Vector2.Distance(_hookTransform.position, transform.position) >= 2)
         {
-            transform.localRotation.SetLookRotation(hookTransform.position);
-            Vector3 moveDirection = hookTransform.position;
+            transform.localRotation.SetLookRotation(_hookTransform.position);
+            Vector3 moveDirection = _hookTransform.position;
             moveDirection.z = 0;
             transform.position += (moveDirection - transform.position).normalized* Time.deltaTime * movementSpeed;
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        StopCoroutine(currentCoroutine);
+        StopCoroutine(_currentCoroutine);
     }
 
     private void OnDisable()
     {
         transform.localPosition = Vector3.zero;
-        if(currentCoroutine != null) StopCoroutine(currentCoroutine);
+        if(_currentCoroutine != null) StopCoroutine(_currentCoroutine);
 
     }
 }

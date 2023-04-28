@@ -1,479 +1,377 @@
 {
     "Level1": [
         {
-            "QuestionNo": 1,
-            "Question": "___ means to clean or clear a surface with a broom or brush.",
+            "Question": "_____ means to clean or clear a surface with a broom or brush.",
             "AnswerWord": "SWEEP",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHIJKLMNOQRTUVXYZ"
         },
         {
-            "QuestionNo": 2,
-            "Question": "___ means to make a loud, snorting sound while sleeping.",
+            "Question": "_____ means to make a loud, snorting sound while sleeping.",
             "AnswerWord": "SNORE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHIJKLMPQTUVWXYZ"
         },
         {
-            "QuestionNo": 3,
-            "Question": "___ means urgency of movement or action.",
-            "AnswerWord": "HASTE",
-            "AnswerLetters": 5,
-            "IncorrectOption": "BCDFGIJKLMNOPQRUVWXYZ"
+            "Question": "_____ means a state of complete happiness or joy.",
+            "AnswerWord": "BLISS",
+            "IncorrectOption": "ACDEFGJKMNOPQRTUVWXYZ"
         },
         {
-            "QuestionNo": 4,
-            "Question": "___ means deep sorrow or sadness, especially after a loss.",
+            "Question": "_____ means deep sorrow or sadness, especially after a loss.",
             "AnswerWord": "GRIEF",
-            "AnswerLetters": 5,
-            "IncorrectOption": "ABCDHJKLMNOPQRTUVWXYZ"
+            "IncorrectOption": "ABCDHJKLMNOPQTUVWXYZ"
         },
         {
-            "QuestionNo": 5,
-            "Question": "___ means a strong, bright flame or fire.",
+            "Question": "_____ means a strong, bright flame or fire.",
             "AnswerWord": "BLAZE",
-            "AnswerLetters": 5,
             "IncorrectOption": "CDFGHIJKMNOPQRSTUVWXY"
         }
     ],
     "Level2": [
         {
-            "QuestionNo": 1,
-            "Question": "___ means to eat with a loud and vigorous chewing action.",
+            "Question": "_____ means to eat with a loud and vigorous chewing action.",
             "AnswerWord": "MUNCH",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABDEFGIJKLOPQRSTVWXYZ"
         },
         {
-            "QuestionNo": 2,
-            "Question": "___ means cheerful and lighthearted in mood or disposition.",
+            "Question": "_____ means cheerful and lighthearted in mood or disposition.",
             "AnswerWord": "JOLLY",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDEFGHIKMNPQRSTUVWXZ"
         },
         {
-            "QuestionNo": 3,
-            "Question": "___ means to cover something loosely with a piece of cloth.",
+            "Question": "_____ means to cover something loosely with a piece of cloth.",
             "AnswerWord": "DRAPE",
-            "AnswerLetters": 5,
-            "IncorrectOption": "BCFGHIJKLMNOQRSTUVWXYZ"
+            "IncorrectOption": "BCFGHIJKLMNOQSTUVWXYZ"
         },
         {
-            "QuestionNo": 4,
-            "Question": "___ means to hold firmly or seize with a hand or claw.",
+            "Question": "_____ means to hold firmly or seize with a hand or claw.",
             "AnswerWord": "GRASP",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDEFHIJKLMNOQTUVWXYZ"
         },
         {
-            "QuestionNo": 5,
-            "Question": "___ means a state of darkness, sadness, or depression.",
+            "Question": "_____ means a state of darkness, sadness, or depression.",
             "AnswerWord": "GLOOM",
-            "AnswerLetters": 5,
-            "IncorrectOption": "ABCDEFGHIJKNPQRSTUVWXYZ"
+            "IncorrectOption": "ABCDEFHIJKNPQRSTUVWXYZ"
         }
         
         
     ],
     "Level3": [
         {
-            "QuestionNo": 1,
-            "Question": "___ means a luxurious boat used for recreation or sport.",
+            "Question": "_____ means a luxurious boat used for recreation or sport.",
             "AnswerWord": "YACHT",
-            "AnswerLetters": 5,
             "IncorrectOption": "BDEFGIJKLMNOPQRSUVWXZ"
         },
         {
-            "QuestionNo": 2,
-            "Question": "___ means to have a strong desire for something",
+            "Question": "_____ means to have a strong desire for something",
             "AnswerWord": "CRAVE",
-            "AnswerLetters": 5,
             "IncorrectOption": "BDFGHIJKLMNOPQSTUWXYZ"
         },
         {
-            "QuestionNo": 3,
-            "Question": "___ means to hold tightly with the hand or arms.",
+            "Question": "_____ means to hold tightly with the hand or arms.",
             "AnswerWord": "CLASP",
-            "AnswerLetters": 5,
             "IncorrectOption": "BDEFGHIJKMNOQRTUVWXYZ"
         },
         {
-            "QuestionNo": 4,
-            "Question": "___ means to crouch or shrink in fear or shame.",
+            "Question": "_____ means to crouch or shrink in fear or shame.",
             "AnswerWord": "COWER",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABDFGHIJKLMNPQSTUVXYZ"
         },
         {
-            "QuestionNo": 5,
-            "Question": "___ means a natural talent or ability for something.",
+            "Question": "_____ means a natural talent or ability for something.",
             "AnswerWord": "FLAIR",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDEGHJKMNOPQSTUVWXYZ"
         }
     ],
     "Level4": [
         {
-            "QuestionNo": 1,
-            "Question": "___ means breaking or separating into small thin pieces.",
+            "Question": "_____ means breaking or separating into small thin pieces.",
             "AnswerWord": "FLAKY",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDEGHIJMNOPQRSTUVWXZ"
         },
         {
-            "QuestionNo": 2,
-            "Question": "___ means to poke someone gently with one's elbow or finger.",
+            "Question": "_____ means to poke someone gently with one's elbow or finger.",
             "AnswerWord": "NUDGE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCFHIJKLMOPQRSTVWXYZ"
         },
         {
-            "QuestionNo": 3,
-            "Question": "__ means a feeling of resentment, often aroused by a slight.",
+            "Question": "_____ means a feeling of resentment, often aroused by a slight.",
             "AnswerWord": "PIQUE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHJKLMNORSTVWXYZ"
         },
         {
-            "QuestionNo": 4,
-            "Question": "___ means to suppress or put an end to something.",
+            "Question": "_____ means to suppress or put an end to something.",
             "AnswerWord": "QUELL",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHIJKMNOPRSTVWXYZ"
         },
         {
-            "QuestionNo": 5,
-            "Question": "___ means a dishonest or unprincipled person.",
+            "Question": "_____ means a dishonest or unprincipled person.",
             "AnswerWord": "ROGUE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFHIJKLMNPQSTVWXYZ"
         }
     ],
     "Level5": [
         {
-            "QuestionNo": 1,
-            "Question": "___ means to enjoy or appreciate something fully.",
+            "Question": "_____ means to enjoy or appreciate something fully.",
             "AnswerWord": "SAVOR",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDEFGHIJKLMNPQTUWXYZ"
         },
         {
-            "QuestionNo": 2,
-            "Question": "___ means to growl or speak in a low, aggressive, or angry tone.",
+            "Question": "_____ means to growl or speak in a low, aggressive, or angry tone.",
             "AnswerWord": "SNARL",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDEFGHIJKMOPQTUVWXYZ"
         },
         {
-            "QuestionNo": 3,
-            "Question": "___ means a feeling of malice or ill will towards someone.",
+            "Question": "_____ means a feeling of malice or ill will towards someone.",
             "AnswerWord": "SPITE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHJKLMNOQRUVWXYZ"
         },
         {
-            "QuestionNo": 4,
-            "Question": "___ means to move or spin rapidly in a or spiral motion.",
+            "Question": "_____ means to move or spin rapidly in a or spiral motion.",
             "AnswerWord": "SWIRL",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDEFGHJKMNOPQTUVXYZ"
         },
         {
-            "QuestionNo": 5,
-            "Question": "___ means to hit or strike something heavily and noisily.",
+            "Question": "_____ means to hit or strike something heavily and noisily.",
             "AnswerWord": "THUMP",
-            "AnswerLetters": 10,
             "IncorrectOption": "ABCDEFGIJKLNOQRSVWXYZ"
         }
-    ],    
+    ],
+    
     "Level6": [
         {
-            "QuestionNo": 1,
-            "Question": "___ means to to spin or rotate quickly around a central point.",
+            "Question": "_____ means to to spin or rotate quickly around a central point.",
             "AnswerWord": "TWIRL",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDEFGHJKMNOPQSUVXYZ"
         },
         {
-            "QuestionNo": 2,
-            "Question": "___ means to shrink back involuntarily from pain.",
+            "Question": "_____ means to shrink back involuntarily from pain.",
             "AnswerWord": "WINCE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABDFGHJKLMOPQRSTUVXYZ"
         },
         {
-            "QuestionNo": 3,
-            "Question": "__ means characterized by quick and inventive verbal humour.",
+            "Question": "_____ means characterized by quick and inventive verbal humour.",
             "AnswerWord": "WITTY",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDEFGHJKLMNOPQRSUVXZ"
         },
         {
-            "QuestionNo": 4,
-            "Question": "___ means intense physical or mental pain or suffering.",
+            "Question": "_____ means intense physical or mental pain or suffering.",
             "AnswerWord": "AGONY",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDEFHIJKLMPQRSTUVWXZ"
         },
         {
-            "QuestionNo": 5,
-            "Question": "___ means to scold or rebuke someone gently.",
+            "Question": "_____ means to scold or rebuke someone gently.",
             "AnswerWord": "CHIDE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABFGJKLMNOPQRSTUVWXYZ"
         },
         {
-            "QuestionNo": 6,
-            "Question": "___ means to make a quick movement with a finger or thumb.",
+            "Question": "_____ means to make a quick movement with a finger or thumb.",
             "AnswerWord": "FLICK",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABDEGHJMNOPQRSTUVWXYZ"
         }
     ],
+    
     "Level7": [
         {
-            "QuestionNo": 1,
-            "Question": "___ means to cause severe damage or destruction to something.",
+            "Question": "_____ means to cause severe damage or destruction to something.",
             "AnswerWord": "WRECK",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABDFGHIJLMNOPQSTUVXYZ"
         },
         {
-            "QuestionNo": 2,
-            "Question": "___ means to collect or gather something bit by bit.",
+            "Question": "_____ means to collect or gather something bit by bit.",
             "AnswerWord": "GLEAN",
-            "AnswerLetters": 5,
-            "IncorrectOption": "ABCDFHIJKMOPQRSTUVXYZ"
+            "IncorrectOption": "BCDFHIJKMOPQRSTUVXYZ"
         },
         {
-            "QuestionNo": 3,
-            "Question": "___ means excessive speed or urgency of movement or action.",
+            "Question": "_____ means excessive speed or urgency of movement or action.",
             "AnswerWord": "HASTE",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDFGIJKLMNOPQRUVXZ"
         },
         {
-            "QuestionNo": 4,
-            "Question": "___ means a special skill or talent for doing something well.",
+            "Question": "_____ means a special skill or talent for doing something well.",
             "AnswerWord": "KNACK",
-            "AnswerLetters": 5,
             "IncorrectOption": "BDEFGHIJLMOPQRSTUVWXYZ"
         },
         {
-            "QuestionNo": 5,
-            "Question": "___ means a peculiar or unexpected behavior or trait.",
+            "Question": "_____ means a peculiar or unexpected behavior or trait.",
             "AnswerWord": "QUIRK",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDEFGHJLMNOPSTVWXYZ"
         },
         {
-            "QuestionNo": 6,
-            "Question": "___ means overused or lacking in originality.",
+            "Question": "_____ means overused or lacking in originality.",
             "AnswerWord": "TRITE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHJKLMNOPQSUVWXYZ"
         },
         {
-            "QuestionNo": 7,
-            "Question": "___ means strong thread consisting of two or more strands.",
+            "Question": "_____ means strong thread consisting of two or more strands.",
             "AnswerWord": "TWINE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHJKLMOPQRSUVXYZ"
         }
     ],
+    
     "Level8": [
         {
-            "QuestionNo": 1,
-            "Question": "___ means enough or more than enough.",
+            "Question": "_____ means enough or more than enough.",
             "AnswerWord": "AMPLE",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDFGHIJKNOQRSTUVWXYZ"
         },
         {
-            "QuestionNo": 2,
-            "Question": "___ means having a dull edge or point.",
+            "Question": "_____ means having a dull edge or point.",
             "AnswerWord": "BLUNT",
-            "AnswerLetters": 5,
             "IncorrectOption": "ACDEFGHIJKMOPQRSVWXYZ"
         },
         {
-            "QuestionNo": 3,
-            "Question": "___ means the most powerful members of a group or society.",
+            "Question": "_____ means the most powerful members of a group or society.",
             "AnswerWord": "ELITE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHIJKNOPQRSUVWXYZ"
         },
         {
-            "QuestionNo": 4,
-            "Question": "___ means a strong light, or a fierce or angry stare.",
+            "Question": "_____ means a strong light, or a fierce or angry stare.",
             "AnswerWord": "GLARE",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDFHIJKMNOPQSTUVWXYZ"
         },
         {
             "QuestionNo": 5,
-            "Question": "___ means a small hill or mound of earth.",
+            "Question": "_____ means a small hill or mound of earth.",
             "AnswerWord": "KNOLL",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDEFGHIJMPQRSTUVWXYZ"
         },
         {
-            "QuestionNo": 6,
-            "Question": "___ means to copy a document using a photocopying machine.",
+            "Question": "_____ means to copy a document using a photocopying machine.",
             "AnswerWord": "XEROX",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHIJKLMNPQSTUVWYZ"
         },
         {
-            "QuestionNo": 7,
-            "Question": "___ means having a strong, fresh, and tangy flavor or scent.",
+            "Question": "_____ means having a strong, fresh, and tangy flavor or scent.",
             "AnswerWord": "ZESTY",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHIJKLMNOPQRSUVWX"
         },
         {
-            "QuestionNo": 8,
-            "Question": "___ means to wave or swing one's arms or legs wildly.",
+            "Question": "_____ means to wave or swing one's arms or legs wildly.",
             "AnswerWord": "FLAIL",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDEGHJKMNOPQRSTUVWXYZ"
         }
-    ],    
+    ],
+    
     "Level9": [
         {
-            "QuestionNo": 1,
-            "Question": "___ means to die from suffocation or submersion in water.",
+            "Question": "_____ means to die from suffocation or submersion in water.",
             "AnswerWord": "DROWN",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCEFGHIJKLMPQSTUVXYZ"
         },
         {
-            "QuestionNo": 2,
-            "Question": "___ means mysterious, often causing fear or unease.",
+            "Question": "_____ means mysterious, often causing fear or unease.",
             "AnswerWord": "EERIE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHJKLMNOPQSTUVWXYZ"
         },
         {
-            "QuestionNo": 3,
-            "Question": "___ means annoyed, frustrated, or irritated.",
+            "Question": "_____ means annoyed, frustrated, or irritated.",
             "AnswerWord": "VEXED",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCFGHIJKLMNOPQRSTUWYZ"
         },
         {
-            "QuestionNo": 4,
-            "Question": "___ means remain hidden so as to wait in ambush for someone.",
+            "Question": "____ means remain hidden so as to wait in ambush for someone.",
             "AnswerWord": "LURK",
-            "AnswerLetters": 4,
             "IncorrectOption": "ABCDEFGHIJMNOPQSTVWXYZ"
         },
         {
-            "QuestionNo": 5,
-            "Question": "___ means energy, enthusiasm, or liveliness in behavior.",
+            "Question": "_____ means energy, enthusiasm, or liveliness in behavior.",
             "AnswerWord": "VERVE",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGHIJKLMNOPQSTUWXYZ"
         },
         {
-            "QuestionNo": 6,
-            "Question": "___ means to turn red in the face due to shame or shyness.",
+            "Question": "_____ means to turn red in the face due to shame or shyness.",
             "AnswerWord": "BLUSH",
-            "AnswerLetters": 5,
             "IncorrectOption": "ACDEFGIJKMNOPQRTVWXYZ"
         },
         {
-            "QuestionNo": 7,
-            "Question": "___ means a short story that teaches a moral lesson.",
+            "Question": "_____ means a short story that teaches a moral lesson.",
             "AnswerWord": "FABLE",
-            "AnswerLetters": 5,
             "IncorrectOption": "CDGHIJKMNOPQRSTUVWXYZ"
         },
         {
-            "QuestionNo": 8,
-            "Question": "___ means a fastening device used to secure a door or gate.",
+            "Question": "_____ means a fastening device used to secure a door or gate.",
             "AnswerWord": "LATCH",
-            "AnswerLetters": 5,
             "IncorrectOption": "BDEFGIJKMNOPQRSUVWXYZ"
         },
         {
-            "QuestionNo": 9,
-            "Question": "___ means influence or power, often based on social status.",
+            "Question": "_____ means influence or power, often based on social status.",
             "AnswerWord": "CLOUT",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABDEFGHIJKMNPQRSVWXYZ"
         }
-    ],    
+    ],
+    
     "Level10": [
         {
-            "QuestionNo": 1,
-            "Question": "___ means to establish by legal and authoritative act.",
+            "Question": "_____ means to establish by legal and authoritative act.",
             "AnswerWord": "ENACT",
-            "AnswerLetters": 5,
             "IncorrectOption": "BDFGHIJKLMOPQRSUVWXYZ"
         },
         {
-            "QuestionNo": 2,
-            "Question": "___ means weak, often referring to physical strength.",
+            "Question": "_____ means weak, often referring to physical strength.",
             "AnswerWord": "FRAIL",
-            "AnswerLetters": 5,
-            "IncorrectOption": "BCDEGHJKMNOPQRSTUVWXYZ"
+            "IncorrectOption": "BCDEGHJKMNOPQSTUVWXYZ"
         },
         {
-            "QuestionNo": 3,
-            "Question": "___ means to avoid something, often by cunning or trickery.",
+            "Question": "_____ means to avoid something, often by cunning or trickery.",
             "AnswerWord": "EVADE",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCFGHIJKLMNOPQRSTUWXYZ"
         },
         {
-            "QuestionNo": 4,
-            "Question": "___ means a channel used to drain water or for irrigation.",
+            "Question": "_____ means a channel used to drain water or for irrigation.",
             "AnswerWord": "DITCH",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABEFGJKLMNOPQRSUVWXYZ"
         },
         {
-            "QuestionNo": 5,
-            "Question": "__ means quick and energetic in movement or manner.",
+            "Question": "_____ means quick and energetic in movement or manner.",
             "AnswerWord": "BRISK",
-            "AnswerLetters": 5,
-            "IncorrectOption": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            "IncorrectOption": "ACDEFGHJLMNOPQTUVWXYZ"
         },
         {
-            "QuestionNo": 6,
-            "Question": "__ means a pleasant smell, often associated with perfume.",
+            "Question": "_____ means a pleasant smell, often associated with perfume.",
             "AnswerWord": "AROMA",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDEFGHIJKLNPQSTUVWXYZ"
         },
         {
-            "QuestionNo": 7,
-            "Question": "___ means to appear, often in a threatening or ominous way.",
+            "Question": "____ means to appear, often in a threatening or ominous way.",
             "AnswerWord": "LOOM",
-            "AnswerLetters": 4,
             "IncorrectOption": "ABCDEFGHIJKNPQRSTUVWXYZ"
         },
         {
-            "QuestionNo": 8,
-            "Question": "___ means a small squalid or simply constructed dwelling.",
+            "Question": "_____ means a small squalid or simply constructed dwelling.",
             "AnswerWord": "HOVEL",
-            "AnswerLetters": 5,
             "IncorrectOption": "ABCDFGIJKMNPQRSTUWXYZ"
         },
         {
-            "QuestionNo": 9,
-            "Question": "___ means a sudden brief burst of bright flame or light.",
+            "Question": "_____ means a sudden brief burst of bright flame or light.",
             "AnswerWord": "FLARE",
-            "AnswerLetters": 5,
             "IncorrectOption": "BCDGHIJKMNOPQSTUVWXYZ"
         },
         {
-            "QuestionNo": 10,
-            "Question": "___ means physical strength or muscle power.",
+            "Question": "_____ means physical strength or muscle power.",
             "AnswerWord": "BRAWN",
-            "AnswerLetters": 5,
             "IncorrectOption": "CDEFGHIJKLMOPQSTUVXYZ"
         }
-    ]
+    ],
+    "Instruction": [
+        {    
+            "Question": "_____ is a language used to communicate instructions to a computer or machine.",
+            "AnswerWord": "CODE",
+            "IncorrectOption": "ABFGHIJKLMNPQRSTUVXYZ"
+        },
+        {
+            "Question": "_____ is the form or outline of an object, often studied in geometry.",
+            "AnswerWord": "SHAPE",
+            "IncorrectOption": "BCDFGIJKLMNOQRTUVWXYZ"
+        },
+        {
+            "Question": "_____ means to determine the total number of objects in a set.",
+            "AnswerWord": "COUNT",
+            "IncorrectOption": "ABDEFGHIJKLMPQRSVWXYZ"
+        },
+        {
+            "Question": "____ is a basic unit of life and the building blocks of all living organisms.",
+            "AnswerWord": "CELL",
+            "IncorrectOption": "ABDFGHIJKMNOPQRSTUVWXYZ"
+        }
+   ]
 }

@@ -115,10 +115,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eeb63b4b087e79a4b89f839d857484ca, type: 3}
   - soundName: CoinEarned
     clip: {fileID: 8300000, guid: 7d044dbb6d67fce4a82ed6d0f49785ab, type: 3}
-  loopingSounds: []
+  - soundName: HealthGainPop
+    clip: {fileID: 8300000, guid: b1b93d9b6591fa7499fcde2a8c860923, type: 3}
   musicSource: {fileID: 7893769598966099860}
   singleSFXSource: {fileID: 7893769598966099863}
-  loopingSFXSource: {fileID: 0}
 --- !u!82 &7893769598966099860
 AudioSource:
   m_ObjectHideFlags: 0

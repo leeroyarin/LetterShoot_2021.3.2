@@ -3,28 +3,23 @@ using Cinemachine;
 
 public class CameraEffects : MonoBehaviour
 {
-   /* [SerializeField]static CameraEffects m_cameraEffects;
-    public static CameraEffects Instance
-    {
-        get 
-        { 
-            if(null == m_cameraEffects) m_cameraEffects = FindObjectOfType<CameraEffects>();
-            return m_cameraEffects; 
-        }
-    }*/
     [SerializeField] CinemachineImpulseListener impulseListener;
     [SerializeField] CinemachineImpulseSource impulseSource;
     [SerializeField] float impulseValue = 0.5f;
 
     private void Awake()
     {
+        //subscribes the OnLetterHitFunction to the correctLetterHit Event
         EventManager.CorrectLetterHit += OnLetterHit;
-
     }
 
-    public void OnLetterHit(bool correctHit)
+    /// <summary>
+    /// Applies camera effects when a letter is hit incorrectly
+    /// </summary>
+    /// <param name="p_isCorrectHit">Whether or not the hit was correct</param>
+    public void OnLetterHit(bool p_isCorrectHit)
     {
-        if (!correctHit)
+        if (!p_isCorrectHit)
         {
             if(impulseListener == null)
             {
@@ -37,6 +32,7 @@ public class CameraEffects : MonoBehaviour
 
     private void OnDestroy()
     {
+        //unsubscribes the OnLetterHitFunction to the correctLetterHit Event
         EventManager.CorrectLetterHit-= OnLetterHit;    
     }
 }

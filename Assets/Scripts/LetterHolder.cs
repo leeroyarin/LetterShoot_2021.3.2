@@ -1,8 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+    /// 
+    /// This class is responsible for UI Activities of the currently running Game Level
+    /// that includes : Letters attained, and question(or we can say hint) 
+    /// 
+    /// Each correct letter after being hitted are added on its screen
+    /// </summary>
 public class LetterHolder : MonoBehaviour
 {
     
@@ -31,11 +37,6 @@ public class LetterHolder : MonoBehaviour
     }
     #endregion
 
-    /// <summary>
-    /// 
-    /// This class is responsible for UI Activities of the currently running Game Level
-    /// that includes : Letters attained, and question(or we can say hint) 
-    /// </summary>
     /* Functions Are:
      *   Adding UIletters with UILetter Class to the Letter Holder UI
      *   Setting the current Question for the running level
@@ -45,14 +46,14 @@ public class LetterHolder : MonoBehaviour
      */
 
 
-
-
+    /// <summary>
+    /// Instanctiates UI gameObjects For the word after removing all the UIletters and adds it to the list.
+    /// </summary>
+    /// <param name="p_correctLetters">An array of correct letters to add to the UI.</param>
     public void AddLettersInLetterHolder(char[] p_correctLetters)
     {
-        /*
-         * Instanctiates UI For the word after removing all the UIletters
-         * and adds it to the llist
-         */
+       
+        //removed all uiletters incase there were any before
         RemoveAllLetters();
         foreach(char letter in p_correctLetters)
         {
@@ -62,26 +63,38 @@ public class LetterHolder : MonoBehaviour
             uiLetterLists.Add(l_UILetter);
         }
     }
+
+    /// <summary>
+    /// Sets the current question for the running level.
+    /// </summary>
+    /// <param name="p_questionText">The text of the question.</param>
     public void SetQuestion(string p_questionText)
     {
         questionTextField.text = p_questionText;
     }
+
+    /// <summary>
+    /// Sets the UI letter corresponding to the received character to active.
+    /// </summary>
+    /// <param name="letterRecieved">The character corresponding to the UI letter to activate.</param>
     public void SetTheUILetterActive(char letterRecieved)
     {
         UILetters l_UILetters = GetUILetterOfChar(letterRecieved);
         l_UILetters.gameObject.SetActive(true);
         l_UILetters.OnLetterLoad();
-        UILetters GetUILetterOfChar(char c)
+
+        //returns uiletters element with the parametered character and unactivated
+        UILetters GetUILetterOfChar(char p_letterCharacter)
         {
-            //returns uiletters element with the parametered character and unactivated
-            int index = uiLetterLists.FindIndex(x => (x.letter == c) && (x.activated == false));
-            if (index >= uiLetterLists.Count || index < 0)
+            int l_index = uiLetterLists.FindIndex(x => (x.letter == p_letterCharacter) && (x.activated == false));
+            if (l_index >= uiLetterLists.Count || l_index < 0)
             {
                 print(uiLetterLists[0] + " " + uiLetterLists[1]);
             }
-            return uiLetterLists[index];
+            return uiLetterLists[l_index];
         }
     }
+
     public void RemoveAllLetters()
     {
         //Destroys all the UIletters objects in the list
@@ -89,6 +102,10 @@ public class LetterHolder : MonoBehaviour
         //clears the list
         uiLetterLists.Clear();
     }
+
+    /// <summary>
+    /// Checks if the word has been completed.
+    /// </summary>
     public void CheckIfWordIsComplete()
     {
         int count = 0;
@@ -104,27 +121,8 @@ public class LetterHolder : MonoBehaviour
             //Invokes the Events WordCompleted
             EventManager.wordCompleted?.Invoke();
 
-            //           AudioManager.Instance.StopSoundLoopAndShiftToAnotherSound();
+            //stop all sounds
             AudioManager.Instance.StopAllSoundAtOnce();
-//            AudioManager.Instance.PlaySound(SoundNames.TrainEnd);
         }
     }
-
-    #region WasteCode
-    /*    
-    public void ActivateLetters(char letter)
-    {
-        RemoveAllLetters();
-        for(int i = 0; i<uiLetterLists.Count; i++)
-        {
-            if (uiLetterLists[i].letter == letter && !(uiLetterLists[i].activated))
-            {
-                uiLetterLists[i].gameObject.SetActive(true);
-                uiLetterLists[i].activated = true;
-                print("Caled");
-                break;
-            }
-        }
-    }*/
-    #endregion
 }

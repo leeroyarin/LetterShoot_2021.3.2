@@ -15,4 +15,6 @@
     public static readonly string BreakBox = "BoxBreak";
     public static readonly string CoinsEarned = "CoinEarned";
 
+    public static readonly string HealthGain = "HealthGainPop";
+
 }
