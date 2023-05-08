@@ -137,6 +137,7 @@ MonoBehaviour:
   harpoonShooterBase: {fileID: 6181268740225124322}
   harpoonLight: {fileID: 6181268740558278682}
   repairTime: 0
+  harpoonMuzzle: {fileID: 6164149807911815971}
 --- !u!58 &6181268738724625433
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -522,6 +523,7 @@ GameObject:
   - component: {fileID: 6181268740225124322}
   - component: {fileID: 6181268740225124323}
   - component: {fileID: 7243110868153621763}
+  - component: {fileID: 6164149807911815971}
   m_Layer: 0
   m_Name: HarpoonMuzzle
   m_TagString: Untagged
@@ -609,6 +611,27 @@ SortingGroup:
   m_SortingLayerID: 444146745
   m_SortingLayer: 10
   m_SortingOrder: 0
+--- !u!95 &6164149807911815971
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6181268740225124317}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32fe1794985f2654ea50247b498edc5e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6181268740549662792
 GameObject:
   m_ObjectHideFlags: 0

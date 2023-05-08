@@ -19,6 +19,7 @@ public class Shooter : MonoBehaviour,IInteractableShooter
     //Private Variables
     bool _IsActivated;
 
+    public Animator harpoonMuzzle;
     private void Awake()
     {
         // Subscribe to CorrectLetterHit event
@@ -100,9 +101,12 @@ public class Shooter : MonoBehaviour,IInteractableShooter
     /// </summary>
     IEnumerator DisableHarpoon()
     {
+        harpoonMuzzle.Play("DamagedAnimation");
         EnableHarpoonLights(false);
         yield return new WaitForSeconds(repairTime);
         EnableHarpoonLights(true);
+        harpoonMuzzle.Play("FineAnimation");
+
     }
 
     /// <summary>
