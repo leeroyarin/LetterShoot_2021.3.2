@@ -84,7 +84,7 @@ public class Shooter : MonoBehaviour,IInteractableShooter
     {
         //checks if the bullet has already coroutine working.
         //if yes the function is stopped
-        if (hook.CheckIfHookIsLaunched()) return;
+        if (!hook.CheckIfHookIsResting()) return;
         hook.LaunchHook(firingPower);
     }
 
@@ -102,6 +102,8 @@ public class Shooter : MonoBehaviour,IInteractableShooter
     IEnumerator DisableHarpoon()
     {
         harpoonMuzzle.Play("DamagedAnimation");
+        hook.CheckTheContainerIfGrabbed();
+        hook.RestHook();
         EnableHarpoonLights(false);
         yield return new WaitForSeconds(repairTime);
         EnableHarpoonLights(true);

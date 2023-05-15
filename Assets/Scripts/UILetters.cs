@@ -32,14 +32,27 @@ public class UILetters : MonoBehaviour
     #endregion
 
     #region UILettersFunctionalities
+
+    /// <summary>
+    /// sets letter text
+    /// </summary>
+    /// <param name="p_letter"></param>
     public void SetLetter(char p_letter)
     {
+        //sets letter
         letterText.text = p_letter.ToString();
+
+        //hides letter
+        letterText.enabled = false;
         letter = p_letter;
     }
     public void OnLetterLoad()
     {
         activated = true;
+
+        //shows letter text
+        letterText.enabled = true;
+
         StartCoroutine(InvokeWordCompleteEventCoroutine());
     }
   

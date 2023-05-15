@@ -96,17 +96,22 @@ public partial class HookBehaviour : MonoBehaviour
                 RestHook();
 
                 //Empties the reference of Letter To Grab
-                if (letterToGrab != null)
-                {
-                    letterToGrab.CheckTheContainer();
-                    letterToGrab = null;
-                }
+                CheckTheContainerIfGrabbed();
                 return;
             }
 
             //LineRenderer
             lineRenderer.SetPosition(0, this.transform.position);
             lineRenderer.SetPosition(1, _hookSpawnPointTransform.position);
+        }
+    }
+
+    public void CheckTheContainerIfGrabbed()
+    {
+        if (letterToGrab != null)
+        {
+            letterToGrab.CheckTheContainer();
+            letterToGrab = null;
         }
     }
 
@@ -117,7 +122,7 @@ public partial class HookBehaviour : MonoBehaviour
     /// Rests the hook by nullifying all physics elements
     /// Plpays Hook RestSound
     /// </summary>
-    private void RestHook()
+    public void RestHook()
     {
         //position
         this.transform.position = _hookSpawnPointTransform.position;
@@ -152,6 +157,7 @@ public partial class HookBehaviour : MonoBehaviour
     /// <param name="p_firingPower"> Force to apply on the Hook to launch</param>
     public void LaunchHook(float p_firingPower)
     {
+        if (this.enabled == false) return;
         //Postion
         this.transform.position = _hookSpawnPointTransform.transform.position;
 

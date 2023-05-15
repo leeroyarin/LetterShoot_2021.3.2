@@ -5,7 +5,6 @@ using UnityEngine.Rendering.Universal;
 public class LightSystemManager : MonoBehaviour
 {
     [SerializeField] Light2D[] lights;
-    [SerializeField] ShadowCaster2D[] shadowCaster;
 
     private void Awake()
     {

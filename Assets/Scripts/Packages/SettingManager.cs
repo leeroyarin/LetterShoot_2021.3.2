@@ -32,8 +32,8 @@ public class SettingManager: MonoBehaviour
         _brightnessSlider.maxValue = 3;
         _brightnessSlider.minValue = -3;
 
-        _contrastSlider.maxValue = 100;
-        _contrastSlider.minValue = -100;
+        _contrastSlider.maxValue = 50;
+        _contrastSlider.minValue = -30;
 
         _saturationSlider.maxValue = 100;
         _saturationSlider.minValue = -100;

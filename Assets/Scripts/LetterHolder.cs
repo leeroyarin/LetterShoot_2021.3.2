@@ -57,9 +57,10 @@ public class LetterHolder : MonoBehaviour
         RemoveAllLetters();
         foreach(char letter in p_correctLetters)
         {
+            //prefab gets instantiated and component gets referenced
             UILetters l_UILetter = Instantiate(letterUi, this.transform).GetComponent<UILetters>();
+
             l_UILetter.SetLetter(letter);
-            l_UILetter.gameObject.SetActive(false);
             uiLetterLists.Add(l_UILetter);
         }
     }
@@ -80,7 +81,6 @@ public class LetterHolder : MonoBehaviour
     public void SetTheUILetterActive(char letterRecieved)
     {
         UILetters l_UILetters = GetUILetterOfChar(letterRecieved);
-        l_UILetters.gameObject.SetActive(true);
         l_UILetters.OnLetterLoad();
 
         //returns uiletters element with the parametered character and unactivated
