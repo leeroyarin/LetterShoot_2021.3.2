@@ -19,103 +19,103 @@ namespace PathCreation {
         public event System.Action OnModified;
         public enum ControlMode { Aligned, Mirrored, Free, Automatic };
 
- #region Fields
+        #region Fields
 
- [SerializeField, HideInInspector]
- List<Vector3> points;
- [SerializeField, HideInInspector]
- bool isClosed;
- [SerializeField, HideInInspector]
- PathSpace space;
- [SerializeField, HideInInspector]
- ControlMode controlMode;
- [SerializeField, HideInInspector]
- float autoControlLength = .3f;
- [SerializeField, HideInInspector]
- bool boundsUpToDate;
- [SerializeField, HideInInspector]
- Bounds bounds;
+        [SerializeField, HideInInspector]
+        List<Vector3> points;
+        [SerializeField, HideInInspector]
+        bool isClosed;
+        [SerializeField, HideInInspector]
+        PathSpace space;
+        [SerializeField, HideInInspector]
+        ControlMode controlMode;
+        [SerializeField, HideInInspector]
+        float autoControlLength = .3f;
+        [SerializeField, HideInInspector]
+        bool boundsUpToDate;
+        [SerializeField, HideInInspector]
+        Bounds bounds;
 
- // Normals settings
- [SerializeField, HideInInspector]
- List<float> perAnchorNormalsAngle;
- [SerializeField, HideInInspector]
- float globalNormalsAngle;
- [SerializeField, HideInInspector]
- bool flipNormals;
-
- #endregion
-
- #region Constructors
-
- /// <summary> Creates a two-anchor path centred around the given centre point </summary>
- ///<param name="isClosed"> Should the end point connect back to the start point? </param>
- ///<param name="space"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>
- public BezierPath (Vector3 centre, bool isClosed = false, PathSpace space = PathSpace.xyz) {
-
- Vector3 dir = (space == PathSpace.xz) ? Vector3.forward : Vector3.up;
- float width = 2;
- float controlHeight = .5f;
- float controlWidth = 1f;
- points = new List<Vector3> {
- centre + Vector3.left * width,
- centre + Vector3.left * controlWidth + dir * controlHeight,
- centre + Vector3.right * controlWidth - dir * controlHeight,
- centre + Vector3.right * width
- };
-
- perAnchorNormalsAngle = new List<float> () { 0, 0 };
-
- Space = space;
- IsClosed = isClosed;
-        }
-
-        /// <summary> Creates a path from the supplied 3D points </summary>
-        ///<param name="points"> List or array of points to create the path from. </param>
-        ///<param name="isClosed"> Should the end point connect back to the start point? </param>
-        ///<param name="space"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>
-        public BezierPath (IEnumerable<Vector3> points, bool isClosed = false, PathSpace space = PathSpace.xyz) {
-            Vector3[] pointsArray = points.ToArray ();
-
-            if (pointsArray.Length < 2) {
-                Debug.LogError ("Path requires at least 2 anchor points.");
-            } else {
-                controlMode = ControlMode.Automatic;
-                this.points = new List<Vector3> { pointsArray[0], Vector3.zero, Vector3.zero, pointsArray[1] };
-                perAnchorNormalsAngle = new List<float> (new float[] { 0, 0 });
-
-                for (int i = 2; i < pointsArray.Length; i++) {
-                    AddSegmentToEnd (pointsArray[i]);
-                    perAnchorNormalsAngle.Add (0);
-                }
-            }
-
-            this.Space = space;
-            this.IsClosed = isClosed;
-        }
-
-        /// <summary> Creates a path from the positions of the supplied 2D points </summary>
-        ///<param name="transforms"> List or array of transforms to create the path from. </param>
-        ///<param name="isClosed"> Should the end point connect back to the start point? </param>
-        ///<param name="space"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>
-        public BezierPath (IEnumerable<Vector2> transforms, bool isClosed = false, PathSpace space = PathSpace.xy):
-            this (transforms.Select (p => new Vector3 (p.x, p.y)), isClosed, space) { }
-
-        /// <summary> Creates a path from the positions of the supplied transforms </summary>
-        ///<param name="transforms"> List or array of transforms to create the path from. </param>
-        ///<param name="isClosed"> Should the end point connect back to the start point? </param>
-        ///<param name="space"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>
-        public BezierPath (IEnumerable<Transform> transforms, bool isClosed = false, PathSpace space = PathSpace.xy):
-            this (transforms.Select (t => t.position), isClosed, space) { }
-
-        /// <summary> Creates a path from the supplied 2D points </summary>
-        ///<param name="points"> List or array of 2d points to create the path from. </param>
-        ///<param name="isClosed"> Should the end point connect back to the start point? </param>
-        ///<param name="pathSpace"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>
-        public BezierPath (IEnumerable<Vector2> points, PathSpace space = PathSpace.xyz, bool isClosed = false):
-            this (points.Select (p => new Vector3 (p.x, p.y)), isClosed, space) { }
+        // Normals settings
+        [SerializeField, HideInInspector]
+        List<float> perAnchorNormalsAngle;
+        [SerializeField, HideInInspector]
+        float globalNormalsAngle;
+        [SerializeField, HideInInspector]
+        bool flipNormals;
 
         #endregion
+
+        #region Constructors
+
+        /// <summary> Creates a two-anchor path centred around the given centre point </summary>
+        ///<param name="isClosed"> Should the end point connect back to the start point? </param>
+        ///<param name="space"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>
+        public BezierPath (Vector3 centre, bool isClosed = false, PathSpace space = PathSpace.xyz) {
+
+        Vector3 dir = (space == PathSpace.xz) ? Vector3.forward : Vector3.up;
+        float width = 2;
+        float controlHeight = .5f;
+        float controlWidth = 1f;
+        points = new List<Vector3> {
+        centre + Vector3.left * width,
+        centre + Vector3.left * controlWidth + dir * controlHeight,
+        centre + Vector3.right * controlWidth - dir * controlHeight,
+        centre + Vector3.right * width
+        };
+
+        perAnchorNormalsAngle = new List<float> () { 0, 0 };
+
+        Space = space;
+        IsClosed = isClosed;
+            }
+
+            /// <summary> Creates a path from the supplied 3D points </summary>
+            ///<param name="points"> List or array of points to create the path from. </param>
+            ///<param name="isClosed"> Should the end point connect back to the start point? </param>
+            ///<param name="space"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>
+            public BezierPath (IEnumerable<Vector3> points, bool isClosed = false, PathSpace space = PathSpace.xyz) {
+                Vector3[] pointsArray = points.ToArray ();
+
+                if (pointsArray.Length < 2) {
+                    Debug.LogError ("Path requires at least 2 anchor points.");
+                } else {
+                    controlMode = ControlMode.Automatic;
+                    this.points = new List<Vector3> { pointsArray[0], Vector3.zero, Vector3.zero, pointsArray[1] };
+                    perAnchorNormalsAngle = new List<float> (new float[] { 0, 0 });
+
+                    for (int i = 2; i < pointsArray.Length; i++) {
+                        AddSegmentToEnd (pointsArray[i]);
+                        perAnchorNormalsAngle.Add (0);
+                    }
+                }
+
+                this.Space = space;
+                this.IsClosed = isClosed;
+            }
+
+            /// <summary> Creates a path from the positions of the supplied 2D points </summary>
+            ///<param name="transforms"> List or array of transforms to create the path from. </param>
+            ///<param name="isClosed"> Should the end point connect back to the start point? </param>
+            ///<param name="space"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>
+            public BezierPath (IEnumerable<Vector2> transforms, bool isClosed = false, PathSpace space = PathSpace.xy):
+                this (transforms.Select (p => new Vector3 (p.x, p.y)), isClosed, space) { }
+
+            /// <summary> Creates a path from the positions of the supplied transforms </summary>
+            ///<param name="transforms"> List or array of transforms to create the path from. </param>
+            ///<param name="isClosed"> Should the end point connect back to the start point? </param>
+            ///<param name="space"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>
+            public BezierPath (IEnumerable<Transform> transforms, bool isClosed = false, PathSpace space = PathSpace.xy):
+                this (transforms.Select (t => t.position), isClosed, space) { }
+
+            /// <summary> Creates a path from the supplied 2D points </summary>
+            ///<param name="points"> List or array of 2d points to create the path from. </param>
+            ///<param name="isClosed"> Should the end point connect back to the start point? </param>
+            ///<param name="pathSpace"> Determines if the path is in 3d space, or clamped to the xy/xz plane </param>
+            public BezierPath (IEnumerable<Vector2> points, PathSpace space = PathSpace.xyz, bool isClosed = false):
+                this (points.Select (p => new Vector3 (p.x, p.y)), isClosed, space) { }
+
+            #endregion
 
         #region Public methods and accessors
 
