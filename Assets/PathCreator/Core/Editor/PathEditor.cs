@@ -440,7 +440,7 @@ namespace PathCreationEditor {
                     }
 
                     if (data.showPerSegmentBounds) {
-                        Bounds segmentBounds = CubicBezierUtility.CalculateSegmentBounds (points[0], points[1], points[2], points[3]);
+                        Bounds segmentBounds = PathCurveUtility.CalculateSegmentBounds (points[0], points[1], points[2], points[3]);
                         Handles.color = globalDisplaySettings.segmentBounds;
                         Handles.DrawWireCube (segmentBounds.center, segmentBounds.size);
                     }

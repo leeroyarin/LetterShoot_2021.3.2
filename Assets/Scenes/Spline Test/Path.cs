@@ -149,7 +149,7 @@ namespace Path2D
                 float t = i / (float)segments;
 
                 // Use CubicBezierUtility to get curve point
-                Vector3 pointOnCurve = CubicBezierUtility.EvaluateCurve(
+                Vector3 pointOnCurve = PathCurveUtility.EvaluateCurve(
                     startPosition, startTangent, endTangent, endPosition, t);
 
                 Handles.DrawAAPolyLine(width, prevPoint, pointOnCurve);

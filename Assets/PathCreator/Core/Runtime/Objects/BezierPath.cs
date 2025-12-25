@@ -290,7 +290,7 @@ namespace PathCreation {
             } else {
                 // Split the curve to find where control points can be inserted to least affect shape of curve
                 // Curve will probably be deformed slightly since splitTime is only an estimate (for performance reasons, and so doesn't correspond exactly with anchorPos)
-                Vector3[][] splitSegment = CubicBezierUtility.SplitCurve (GetPointsInSegment (segmentIndex), splitTime);
+                Vector3[][] splitSegment = PathCurveUtility.SplitCurve (GetPointsInSegment (segmentIndex), splitTime);
                 points.InsertRange (segmentIndex * 3 + 2, new Vector3[] { splitSegment[0][2], splitSegment[1][0], splitSegment[1][1] });
                 int newAnchorIndex = segmentIndex * 3 + 3;
                 MovePoint (newAnchorIndex - 2, splitSegment[0][1], true);
@@ -415,9 +415,9 @@ namespace PathCreation {
                 minMax.AddValue (p[0]);
                 minMax.AddValue (p[3]);
 
-                List<float> extremePointTimes = CubicBezierUtility.ExtremePointTimes (p[0], p[1], p[2], p[3]);
+                List<float> extremePointTimes = PathCurveUtility.ExtremePointTimes (p[0], p[1], p[2], p[3]);
                 foreach (float t in extremePointTimes) {
-                    minMax.AddValue (CubicBezierUtility.EvaluateCurve (p, t));
+                    minMax.AddValue (PathCurveUtility.EvaluateCurve (p, t));
                 }
             }
 
@@ -501,9 +501,9 @@ namespace PathCreation {
                 minMax.AddValue (p[0]);
                 minMax.AddValue (p[3]);
 
-                List<float> extremePointTimes = CubicBezierUtility.ExtremePointTimes (p[0], p[1], p[2], p[3]);
+                List<float> extremePointTimes = PathCurveUtility.ExtremePointTimes (p[0], p[1], p[2], p[3]);
                 foreach (float t in extremePointTimes) {
-                    minMax.AddValue (CubicBezierUtility.EvaluateCurve (p, t));
+                    minMax.AddValue (PathCurveUtility.EvaluateCurve (p, t));
                 }
             }
 

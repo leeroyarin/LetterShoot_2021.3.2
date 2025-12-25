@@ -63,14 +63,14 @@ namespace PathCreationEditor
                 dstSinceLastVertex = 0;
                 dstSinceLastIntermediary = 0;
 
-                float estimatedSegmentLength = CubicBezierUtility.EstimateCurveLength(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3]);
+                float estimatedSegmentLength = PathCurveUtility.EstimateCurveLength(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3]);
                 int divisions = Mathf.CeilToInt(estimatedSegmentLength * accuracy * accuracyMultiplier);
                 float increment = 1f / divisions;
 
                 for (float t = increment; t <= 1; t += increment)
                 {
-                    Vector3 pointOnPath = CubicBezierUtility.EvaluateCurve(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t);
-                    Vector3 nextPointOnPath = CubicBezierUtility.EvaluateCurve(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t + increment);
+                    Vector3 pointOnPath = PathCurveUtility.EvaluateCurve(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t);
+                    Vector3 nextPointOnPath = PathCurveUtility.EvaluateCurve(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t + increment);
 
                     // angle at current point on path
                     float localAngle = 180 - MathUtility.MinAngle(prevPointOnPath, pointOnPath, nextPointOnPath);

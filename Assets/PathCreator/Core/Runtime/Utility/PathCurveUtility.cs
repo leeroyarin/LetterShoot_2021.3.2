@@ -6,7 +6,7 @@ namespace PathCreation.Utility {
 
     /// Collection of functions related to cubic bezier curves
     /// (a curve with a start and end 'anchor' point, and two 'control' points to define the shape of the curve between the anchors)
-    public static class CubicBezierUtility {
+    public static class PathCurveUtility {
 
         /// Returns point at time 't' (between 0 and 1) along bezier curve defined by 4 points (anchor_1, control_1, control_2, anchor_2)
         public static Vector3 EvaluateCurve (Vector3[] points, float t) {
@@ -63,7 +63,7 @@ namespace PathCreation.Utility {
 
             List<float> extremePointTimes = ExtremePointTimes (p0,p1,p2,p3);
             foreach (float t in extremePointTimes) {
-                minMax.AddValue (CubicBezierUtility.EvaluateCurve (p0, p1, p2, p3, t));
+                minMax.AddValue (PathCurveUtility.EvaluateCurve (p0, p1, p2, p3, t));
             }
 
             return new Bounds ((minMax.Min + minMax.Max) / 2, minMax.Max - minMax.Min);
