@@ -86,9 +86,8 @@ public class LevelSelectionManager : MonoBehaviour
        
         //sets the current available levels count to players current level
         availableLevelsCount = PlayerData.PlayerCurrentLevel;
-
         //incase the current available level of player exceeds more that total available level, available level becomes as much as total level
-        if(availableLevelsCount > totalLevelCount) availableLevelsCount = totalLevelCount;
+        if (availableLevelsCount > totalLevelCount) availableLevelsCount = totalLevelCount;
 
         //then finally the player's current level count is set according to current available count
         currentSelectedLevel = availableLevelsCount;

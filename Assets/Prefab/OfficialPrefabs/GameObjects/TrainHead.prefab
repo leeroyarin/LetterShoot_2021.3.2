@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  stop: 0
+  stopped: 0
   headLight: {fileID: 6469146318054376080}
 --- !u!61 &6469146317610588737
 BoxCollider2D:

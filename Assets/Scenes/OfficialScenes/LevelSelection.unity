@@ -4493,7 +4493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5049960463846529700, guid: 3f0c983a5bb4a0546832d7f465dbf074, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -226.95758
+      value: -226.9576
       objectReference: {fileID: 0}
     - target: {fileID: 5049960463857975131, guid: 3f0c983a5bb4a0546832d7f465dbf074, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4513,7 +4513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5049960464390318504, guid: 3f0c983a5bb4a0546832d7f465dbf074, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -122.42629
+      value: -122.426285
       objectReference: {fileID: 0}
     - target: {fileID: 5049960464644635552, guid: 3f0c983a5bb4a0546832d7f465dbf074, type: 3}
       propertyPath: m_Pivot.x
@@ -4609,11 +4609,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5049960464750930899, guid: 3f0c983a5bb4a0546832d7f465dbf074, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -174.69193
+      value: -174.69191
       objectReference: {fileID: 0}
     - target: {fileID: 5049960464779062791, guid: 3f0c983a5bb4a0546832d7f465dbf074, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70.16064
+      value: -70.16063
       objectReference: {fileID: 0}
     - target: {fileID: 5049960464925035485, guid: 3f0c983a5bb4a0546832d7f465dbf074, type: 3}
       propertyPath: m_IsActive
@@ -9729,6 +9729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 965060262}
   - component: {fileID: 965060261}
+  - component: {fileID: 965060263}
   m_Layer: 0
   m_Name: GameSceneManager
   m_TagString: Untagged
@@ -9763,6 +9764,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &965060263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965060260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5b2bddeb7466f42bdb44e224ae6bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &977991063
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public  class EventManager : MonoBehaviour
     public static Action<bool> GameCompleted;
     public static Action EraseAllLetters;
     public static Action<bool> CorrectLetterHit;
+
+
     #region oldCode
     /*
         //Creating a Directory that uses string and Actions as parameter
